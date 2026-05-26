@@ -15,19 +15,19 @@
         }
 
         :root {
-            --bg-primary: #0a0e27;
-            --bg-secondary: #0f1535;
-            --bg-tertiary: #1a2449;
-            --bg-hover: #252d4a;
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #1f2937;
+            --bg-hover: #2d3748;
             --text-primary: #ffffff;
             --text-secondary: #a0aec0;
             --text-muted: #718096;
-            --accent-primary: #3b82f6;
-            --accent-hover: #2563eb;
-            --accent-secondary: #10b981;
-            --border-color: #2d3748;
-            --border-light: #3d4758;
-            --success: #10b981;
+            --accent-primary: #14b8a6;
+            --accent-hover: #0d9488;
+            --accent-secondary: #f97316;
+            --border-color: #30363d;
+            --border-light: #444c56;
+            --success: #14b8a6;
             --spacing-unit: 8px;
         }
 
@@ -111,13 +111,13 @@
 
         .version-badge {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
-            border: 1px solid var(--accent-secondary);
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(249, 115, 22, 0.05) 100%);
+            border: 1px solid var(--accent-primary);
             border-radius: 20px;
             padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 2);
             font-size: 12px;
             font-weight: 600;
-            color: var(--accent-secondary);
+            color: var(--accent-primary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: calc(var(--spacing-unit) * 3);
@@ -175,12 +175,12 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
             color: white;
-            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 16px rgba(20, 184, 166, 0.2);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.35);
+            box-shadow: 0 12px 24px rgba(20, 184, 166, 0.35);
         }
 
         .btn-secondary {
@@ -261,7 +261,7 @@
         }
 
         .feature-card {
-            background: linear-gradient(135deg, rgba(26, 36, 73, 0.6) 0%, rgba(15, 21, 53, 0.6) 100%);
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(22, 27, 34, 0.6) 100%);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: calc(var(--spacing-unit) * 7);
@@ -278,7 +278,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05) 0%, transparent 100%);
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -286,7 +286,7 @@
         .feature-card:hover {
             border-color: var(--accent-primary);
             transform: translateY(-6px);
-            box-shadow: 0 16px 32px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 16px 32px rgba(20, 184, 166, 0.15);
         }
 
         .feature-card:hover::before {
@@ -294,16 +294,16 @@
         }
 
         .feature-icon {
-            width: 56px;
-            height: 56px;
+            width: 64px;
+            height: 64px;
             background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            font-size: 32px;
             margin-bottom: calc(var(--spacing-unit) * 4);
-            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 8px 16px rgba(20, 184, 166, 0.2);
         }
 
         .feature-card h3 {
@@ -322,7 +322,7 @@
         /* Tech Stack */
         .tech-stack {
             padding: calc(var(--spacing-unit) * 14) calc(var(--spacing-unit) * 4);
-            background: linear-gradient(135deg, rgba(26, 36, 73, 0.7) 0%, rgba(15, 21, 53, 0.7) 100%);
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.7) 0%, rgba(22, 27, 34, 0.7) 100%);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
@@ -366,7 +366,7 @@
 
         .tech-list li:before {
             content: "✓";
-            color: var(--accent-secondary);
+            color: var(--accent-primary);
             font-weight: 800;
             font-size: 20px;
             flex-shrink: 0;
@@ -386,7 +386,7 @@
         .tech-visual code {
             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
             font-size: 14px;
-            color: var(--accent-secondary);
+            color: var(--accent-primary);
             text-align: left;
             white-space: pre-wrap;
             word-break: break-word;
@@ -435,7 +435,7 @@
             border-color: var(--accent-primary);
             color: white;
             transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 12px 24px rgba(20, 184, 166, 0.3);
         }
 
         /* CTA Section */
@@ -543,6 +543,12 @@
             .hero-stats {
                 gap: calc(var(--spacing-unit) * 4);
             }
+
+            .feature-icon {
+                width: 56px;
+                height: 56px;
+                font-size: 28px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -608,37 +614,37 @@
 
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">📊</div>
+                <div class="feature-icon">📡</div>
                 <h3>Real-Time Signals</h3>
                 <p>Live data feeds across 10+ sports. Scan odds movements, track sharp action, and spot anomalies in seconds.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon">🚀</div>
                 <h3>Instant Deployment</h3>
                 <p>One-click deploy to Railway. No infrastructure headaches. Scales automatically as you grow.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">🎯</div>
+                <div class="feature-icon">🎲</div>
                 <h3>Signal Detection</h3>
                 <p>Automated scanning for +EV opportunities. Get alerts on key market movements before they move.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">🔐</div>
+                <div class="feature-icon">🔒</div>
                 <h3>Secure & Private</h3>
                 <p>Built with security first. Your data stays private. Self-hosted or cloud-deployed on your terms.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">🛠️</div>
+                <div class="feature-icon">⚙️</div>
                 <h3>Customizable</h3>
                 <p>Open source. Extend with custom rules, integrations, and workflows. Built for developers.</p>
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">📈</div>
+                <div class="feature-icon">📊</div>
                 <h3>Performance Metrics</h3>
                 <p>Track your signals over time. Measure ROI, win rate, and signal quality in one dashboard.</p>
             </div>
