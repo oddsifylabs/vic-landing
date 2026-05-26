@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VIC - Vegas Intelligence Console. Real-time signal intelligence for serious bettors. Deploy in seconds with Railway.">
-    <meta name="og:title" content="VIC - Vegas Intelligence Console">
+    <meta name="description" content="VIC v3 - Vegas Intelligence Console. Real-time signal intelligence for serious bettors. Deploy in seconds with Railway.">
+    <meta name="og:title" content="VIC v3 - Vegas Intelligence Console">
     <meta name="og:description" content="Real-time signal intelligence for serious bettors. Deploy in seconds with Railway.">
-    <meta name="og:image" content="https://www.oddsifylabs.com/og-image.jpg">
-    <title>VIC - Vegas Intelligence Console</title>
+    <title>VIC v3 - Vegas Intelligence Console</title>
     <style>
         * {
             margin: 0;
@@ -19,6 +18,7 @@
             --bg-primary: #0a0e27;
             --bg-secondary: #0f1535;
             --bg-tertiary: #1a2449;
+            --bg-hover: #252d4a;
             --text-primary: #ffffff;
             --text-secondary: #a0aec0;
             --text-muted: #718096;
@@ -26,6 +26,7 @@
             --accent-hover: #2563eb;
             --accent-secondary: #10b981;
             --border-color: #2d3748;
+            --border-light: #3d4758;
             --success: #10b981;
             --spacing-unit: 8px;
         }
@@ -43,7 +44,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
+            padding: calc(var(--spacing-unit) * 3.5) calc(var(--spacing-unit) * 4);
             border-bottom: 1px solid var(--border-color);
             backdrop-filter: blur(10px);
             position: sticky;
@@ -52,42 +53,82 @@
         }
 
         .logo {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 800;
             letter-spacing: -0.5px;
             text-decoration: none;
             color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--spacing-unit) * 1.5);
         }
 
-        .logo span {
-            color: var(--accent-primary);
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
-        nav a {
+        .logo-main {
+            font-size: 18px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-version {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+        }
+
+        nav a.nav-link {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.2s;
+            font-weight: 500;
+            transition: all 0.2s;
+            padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 1.5);
+            border-radius: 6px;
         }
 
-        nav a:hover {
+        nav a.nav-link:hover {
             color: var(--accent-primary);
+            background: var(--bg-hover);
         }
 
         /* Hero Section */
         .hero {
-            padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
-            max-width: 900px;
+            padding: calc(var(--spacing-unit) * 18) calc(var(--spacing-unit) * 4);
+            max-width: 950px;
             margin: 0 auto;
             text-align: center;
         }
 
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 1px solid var(--accent-secondary);
+            border-radius: 20px;
+            padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 2);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
         .hero h1 {
-            font-size: 56px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: calc(var(--spacing-unit) * 2);
-            letter-spacing: -1px;
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            letter-spacing: -1.5px;
         }
 
         .hero h1 .highlight {
@@ -100,10 +141,11 @@
         .hero p {
             font-size: 20px;
             color: var(--text-secondary);
-            margin-bottom: calc(var(--spacing-unit) * 4);
-            max-width: 600px;
+            margin-bottom: calc(var(--spacing-unit) * 5);
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
 
         .cta-group {
@@ -111,6 +153,7 @@
             gap: calc(var(--spacing-unit) * 2);
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: calc(var(--spacing-unit) * 4);
         }
 
         .btn {
@@ -118,178 +161,191 @@
             align-items: center;
             justify-content: center;
             gap: calc(var(--spacing-unit) * 1);
-            padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 4);
-            border-radius: 8px;
+            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4.5);
+            border-radius: 10px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 15px;
             border: none;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             white-space: nowrap;
         }
 
         .btn-primary {
-            background: var(--accent-primary);
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
             color: white;
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
         }
 
         .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.35);
         }
 
         .btn-secondary {
-            background: var(--bg-tertiary);
+            background: transparent;
             color: var(--text-primary);
-            border: 1px solid var(--border-color);
+            border: 1.5px solid var(--border-light);
         }
 
         .btn-secondary:hover {
-            background: var(--border-color);
+            background: var(--bg-hover);
             border-color: var(--accent-primary);
             color: var(--accent-primary);
         }
 
+        .hero-stats {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 6);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: calc(var(--spacing-unit) * 6);
+            padding-top: calc(var(--spacing-unit) * 6);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: calc(var(--spacing-unit) * 1);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
         /* Features Section */
         .features {
-            padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 4);
-            max-width: 1200px;
+            padding: calc(var(--spacing-unit) * 14) calc(var(--spacing-unit) * 4);
+            max-width: 1280px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: calc(var(--spacing-unit) * 10);
+            margin-bottom: calc(var(--spacing-unit) * 12);
         }
 
         .section-header h2 {
-            font-size: 40px;
-            font-weight: 700;
-            margin-bottom: calc(var(--spacing-unit) * 2);
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            letter-spacing: -1px;
         }
 
         .section-header p {
             font-size: 18px;
             color: var(--text-secondary);
-            max-width: 500px;
+            max-width: 550px;
             margin: 0 auto;
+            line-height: 1.7;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: calc(var(--spacing-unit) * 4);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: calc(var(--spacing-unit) * 5);
         }
 
         .feature-card {
-            background: linear-gradient(135deg, rgba(26, 36, 73, 0.4) 0%, rgba(15, 21, 53, 0.4) 100%);
+            background: linear-gradient(135deg, rgba(26, 36, 73, 0.6) 0%, rgba(15, 21, 53, 0.6) 100%);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: calc(var(--spacing-unit) * 6);
+            border-radius: 16px;
+            padding: calc(var(--spacing-unit) * 7);
             backdrop-filter: blur(10px);
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .feature-card:hover {
             border-color: var(--accent-primary);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.1);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(59, 130, 246, 0.15);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
         }
 
         .feature-icon {
-            width: 48px;
-            height: 48px;
+            width: 56px;
+            height: 56px;
             background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-            border-radius: 8px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            margin-bottom: calc(var(--spacing-unit) * 3);
+            font-size: 28px;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2);
         }
 
         .feature-card h3 {
-            font-size: 18px;
-            margin-bottom: calc(var(--spacing-unit) * 2);
-            font-weight: 600;
+            font-size: 19px;
+            margin-bottom: calc(var(--spacing-unit) * 2.5);
+            font-weight: 700;
+            letter-spacing: -0.3px;
         }
 
         .feature-card p {
             color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        /* Social Links */
-        .social-section {
-            padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 4);
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .social-section h2 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: calc(var(--spacing-unit) * 4);
-        }
-
-        .social-links {
-            display: flex;
-            gap: calc(var(--spacing-unit) * 3);
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            text-decoration: none;
-            color: var(--text-secondary);
-            transition: all 0.2s;
-        }
-
-        .social-link:hover {
-            background: var(--accent-primary);
-            border-color: var(--accent-primary);
-            color: white;
-            transform: translateY(-2px);
+            font-size: 15px;
+            line-height: 1.8;
         }
 
         /* Tech Stack */
         .tech-stack {
-            padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 4);
-            background: linear-gradient(135deg, rgba(26, 36, 73, 0.5) 0%, rgba(15, 21, 53, 0.5) 100%);
+            padding: calc(var(--spacing-unit) * 14) calc(var(--spacing-unit) * 4);
+            background: linear-gradient(135deg, rgba(26, 36, 73, 0.7) 0%, rgba(15, 21, 53, 0.7) 100%);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
 
         .tech-content {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: calc(var(--spacing-unit) * 8);
+            gap: calc(var(--spacing-unit) * 10);
             align-items: center;
         }
 
         .tech-info h2 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: calc(var(--spacing-unit) * 3);
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            letter-spacing: -1px;
         }
 
         .tech-info p {
             color: var(--text-secondary);
-            margin-bottom: calc(var(--spacing-unit) * 4);
+            margin-bottom: calc(var(--spacing-unit) * 5);
             font-size: 16px;
             line-height: 1.8;
         }
@@ -299,69 +355,118 @@
         }
 
         .tech-list li {
-            padding: calc(var(--spacing-unit) * 1.5) 0;
+            padding: calc(var(--spacing-unit) * 2) 0;
             color: var(--text-secondary);
-            font-size: 15px;
+            font-size: 16px;
             display: flex;
             align-items: center;
-            gap: calc(var(--spacing-unit) * 2);
+            gap: calc(var(--spacing-unit) * 2.5);
+            font-weight: 500;
         }
 
         .tech-list li:before {
             content: "✓";
-            color: var(--success);
-            font-weight: 700;
-            font-size: 18px;
+            color: var(--accent-secondary);
+            font-weight: 800;
+            font-size: 20px;
+            flex-shrink: 0;
         }
 
         .tech-visual {
             background: var(--bg-tertiary);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: calc(var(--spacing-unit) * 8);
             border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 300px;
+            min-height: 340px;
         }
 
         .tech-visual code {
             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-            font-size: 13px;
-            color: var(--success);
+            font-size: 14px;
+            color: var(--accent-secondary);
             text-align: left;
             white-space: pre-wrap;
             word-break: break-word;
-            line-height: 1.5;
+            line-height: 1.6;
+        }
+
+        /* Social Links */
+        .social-section {
+            padding: calc(var(--spacing-unit) * 14) calc(var(--spacing-unit) * 4);
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-section h2 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: calc(var(--spacing-unit) * 6);
+            letter-spacing: -1px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: var(--bg-tertiary);
+            border: 1.5px solid var(--border-color);
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-size: 24px;
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3);
         }
 
         /* CTA Section */
         .cta-final {
             padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             text-align: center;
         }
 
         .cta-final h2 {
-            font-size: 40px;
-            font-weight: 700;
-            margin-bottom: calc(var(--spacing-unit) * 2);
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            letter-spacing: -1px;
         }
 
         .cta-final p {
             color: var(--text-secondary);
             font-size: 18px;
-            margin-bottom: calc(var(--spacing-unit) * 6);
-            max-width: 600px;
+            margin-bottom: calc(var(--spacing-unit) * 7);
+            max-width: 620px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
 
         /* Footer */
         footer {
             border-top: 1px solid var(--border-color);
-            padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 4);
+            padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 4);
             text-align: center;
             color: var(--text-muted);
             font-size: 14px;
@@ -370,16 +475,25 @@
         footer a {
             color: var(--accent-primary);
             text-decoration: none;
+            transition: color 0.2s;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            color: var(--accent-secondary);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            .logo {
+                gap: calc(var(--spacing-unit) * 1);
+            }
+
+            .logo-main {
+                font-size: 16px;
+            }
+
             .hero h1 {
-                font-size: 36px;
+                font-size: 42px;
             }
 
             .hero p {
@@ -393,29 +507,41 @@
 
             .btn {
                 width: 100%;
+                padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 4);
             }
 
-            .section-header h2 {
-                font-size: 28px;
+            .section-header h2,
+            .cta-final h2,
+            .tech-info h2,
+            .social-section h2 {
+                font-size: 32px;
             }
 
             .tech-content {
                 grid-template-columns: 1fr;
-                gap: calc(var(--spacing-unit) * 4);
+                gap: calc(var(--spacing-unit) * 6);
             }
 
             .tech-visual {
-                min-height: auto;
-                padding: calc(var(--spacing-unit) * 4);
+                min-height: 280px;
+                padding: calc(var(--spacing-unit) * 6);
+            }
+
+            .tech-visual code {
+                font-size: 12px;
             }
 
             .social-links {
-                gap: calc(var(--spacing-unit) * 2);
+                gap: calc(var(--spacing-unit) * 2.5);
             }
 
             nav {
                 flex-direction: column;
                 gap: calc(var(--spacing-unit) * 2);
+            }
+
+            .hero-stats {
+                gap: calc(var(--spacing-unit) * 4);
             }
         }
 
@@ -431,17 +557,23 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <a href="#" class="logo">VIC <span>Console</span></a>
-        <a href="https://github.com/oddsifylabs/vic-landing">GitHub</a>
+        <a href="#" class="logo">
+            <div class="logo-text">
+                <div class="logo-main">VIC</div>
+                <div class="logo-version">v3</div>
+            </div>
+        </a>
+        <a href="https://github.com/oddsifylabs/vic" class="nav-link">GitHub</a>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
+        <div class="version-badge">Now Available – VIC v3</div>
         <h1>
             <span class="highlight">Vegas Intelligence</span><br>
             Console
         </h1>
-        <p>Real-time signal intelligence for serious bettors. Deploy in seconds with Railway.</p>
+        <p>Real-time signal intelligence for serious bettors. Deploy in seconds with Railway. Build your edge.</p>
         <div class="cta-group">
             <a href="https://railway.com/deploy/vegasintelligenceconsole?referralCode=3WX7iH&utm_medium=integration&utm_source=template&utm_campaign=generic" class="btn btn-primary">
                 Deploy on Railway
@@ -450,13 +582,28 @@
                 View on GitHub
             </a>
         </div>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Sports Covered</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">Real-Time</div>
+                <div class="stat-label">Signal Detection</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">1-Click</div>
+                <div class="stat-label">Deploy</div>
+            </div>
+        </div>
     </section>
 
     <!-- Features -->
     <section class="features">
         <div class="section-header">
             <h2>Powerful Intelligence Features</h2>
-            <p>Everything you need to stay ahead of the market</p>
+            <p>Everything you need to stay ahead of the market and hunt edges</p>
         </div>
 
         <div class="features-grid">
@@ -503,7 +650,7 @@
         <div class="tech-content">
             <div class="tech-info">
                 <h2>Built for Serious Traders</h2>
-                <p>VIC is a production-grade console built on modern tech. Deploy anywhere, integrate everywhere.</p>
+                <p>VIC v3 is a production-grade console built on modern tech. Deploy anywhere, integrate everywhere. Battle-tested for real-world trading.</p>
                 
                 <ul class="tech-list">
                     <li>Node.js + Express backend</li>
@@ -520,6 +667,7 @@
 ✓ Server running on :3000
 ✓ Database synced
 ✓ Signals initialized
+✓ Real-time feeds active
 
 Ready to hunt edges →</code>
             </div>
@@ -545,7 +693,7 @@ Ready to hunt edges →</code>
     <!-- Final CTA -->
     <section class="cta-final">
         <h2>Ready to Deploy?</h2>
-        <p>Get VIC running in production within minutes. One click on Railway, full control in your hands.</p>
+        <p>Get VIC running in production within minutes. One click on Railway, full control in your hands. No waiting. No friction. Just speed.</p>
         <div class="cta-group">
             <a href="https://railway.com/deploy/vegasintelligenceconsole?referralCode=3WX7iH&utm_medium=integration&utm_source=template&utm_campaign=generic" class="btn btn-primary">
                 Deploy Now
@@ -558,7 +706,7 @@ Ready to hunt edges →</code>
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 <a href="https://www.oddsifylabs.com">Oddsify Labs</a>. VIC Landing Page is open source. Built in public. <a href="https://github.com/oddsifylabs/vic-landing">Join us on GitHub.</a></p>
+        <p>© 2025 <a href="https://www.oddsifylabs.com">Oddsify Labs</a>. VIC v3 is open source. Built in public. <a href="https://github.com/oddsifylabs/vic-landing">Join us on GitHub.</a></p>
     </footer>
 
     <script>
