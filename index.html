@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VIC v3 - Vegas Intelligence Console. Real-time signal intelligence for serious bettors. Deploy in seconds with Railway.">
-    <meta name="og:title" content="VIC v3 - Vegas Intelligence Console">
-    <meta name="og:description" content="Real-time signal intelligence for serious bettors. Deploy in seconds with Railway.">
-    <title>VIC v3 - Vegas Intelligence Console</title>
+    <meta name="description" content="VIC - Vegas Intelligence Console. Real-time sports betting signals and market intelligence. Find +EV opportunities across 10+ sports.">
+    <meta name="og:title" content="VIC - Vegas Intelligence Console">
+    <meta name="og:description" content="Real-time sports betting signals and market intelligence for serious bettors.">
+    <title>VIC - Vegas Intelligence Console</title>
     <style>
         * {
             margin: 0;
@@ -15,25 +15,25 @@
         }
 
         :root {
-            --bg-primary: #0d1117;
-            --bg-secondary: #161b22;
-            --bg-tertiary: #1f2937;
-            --bg-hover: #2d3748;
+            --bg-primary: #0a0d12;
+            --bg-secondary: #0f1419;
+            --bg-tertiary: #14191f;
+            --bg-hover: #1a202d;
             --text-primary: #ffffff;
-            --text-secondary: #a0aec0;
-            --text-muted: #718096;
-            --accent-primary: #14b8a6;
-            --accent-hover: #0d9488;
-            --accent-secondary: #f97316;
-            --border-color: #30363d;
-            --border-light: #444c56;
-            --success: #14b8a6;
+            --text-secondary: #b0b8c1;
+            --text-muted: #7a8290;
+            --accent-primary: #00d4aa;
+            --accent-secondary: #ff6b35;
+            --accent-tertiary: #4361ee;
+            --border-color: #1f2937;
+            --border-light: #2d3748;
+            --success: #00d4aa;
             --spacing-unit: 8px;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #0a0d12;
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
@@ -44,23 +44,41 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: calc(var(--spacing-unit) * 3.5) calc(var(--spacing-unit) * 4);
+            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
             border-bottom: 1px solid var(--border-color);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
+            background: rgba(10, 13, 18, 0.8);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .logo {
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -0.8px;
             text-decoration: none;
             color: var(--text-primary);
             display: flex;
             align-items: center;
-            gap: calc(var(--spacing-unit) * 1.5);
+            gap: calc(var(--spacing-unit) * 2);
+            transition: opacity 0.2s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 900;
         }
 
         .logo-text {
@@ -70,68 +88,71 @@
         }
 
         .logo-main {
-            font-size: 18px;
-            font-weight: 800;
+            font-size: 20px;
+            font-weight: 900;
             background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .logo-version {
-            font-size: 11px;
+        .logo-sub {
+            font-size: 10px;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            color: var(--accent-secondary);
+            letter-spacing: 1px;
+            color: var(--accent-primary);
             text-transform: uppercase;
         }
 
-        nav a.nav-link {
+        nav .nav-links {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 3);
+            align-items: center;
+        }
+
+        nav a {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.2s;
-            padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 1.5);
-            border-radius: 6px;
         }
 
-        nav a.nav-link:hover {
+        nav a:hover {
             color: var(--accent-primary);
-            background: var(--bg-hover);
         }
 
         /* Hero Section */
         .hero {
-            padding: calc(var(--spacing-unit) * 18) calc(var(--spacing-unit) * 4);
-            max-width: 950px;
+            padding: calc(var(--spacing-unit) * 20) calc(var(--spacing-unit) * 4);
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .version-badge {
+        .hero-badge {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(249, 115, 22, 0.05) 100%);
+            background: rgba(0, 212, 170, 0.1);
             border: 1px solid var(--accent-primary);
-            border-radius: 20px;
-            padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 2);
+            border-radius: 24px;
+            padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2.5);
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--accent-primary);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: calc(var(--spacing-unit) * 3);
+            letter-spacing: 0.8px;
+            margin-bottom: calc(var(--spacing-unit) * 4);
         }
 
         .hero h1 {
-            font-size: 64px;
-            font-weight: 800;
-            line-height: 1.1;
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.05;
             margin-bottom: calc(var(--spacing-unit) * 3);
-            letter-spacing: -1.5px;
+            letter-spacing: -2px;
         }
 
-        .hero h1 .highlight {
+        .hero h1 .grad {
             background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -139,21 +160,20 @@
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--text-secondary);
-            margin-bottom: calc(var(--spacing-unit) * 5);
-            max-width: 650px;
+            margin-bottom: calc(var(--spacing-unit) * 6);
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
         .cta-group {
             display: flex;
-            gap: calc(var(--spacing-unit) * 2);
+            gap: calc(var(--spacing-unit) * 2.5);
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: calc(var(--spacing-unit) * 4);
         }
 
         .btn {
@@ -161,10 +181,10 @@
             align-items: center;
             justify-content: center;
             gap: calc(var(--spacing-unit) * 1);
-            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4.5);
-            border-radius: 10px;
+            padding: calc(var(--spacing-unit) * 3.5) calc(var(--spacing-unit) * 5);
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 15px;
             border: none;
             cursor: pointer;
@@ -173,20 +193,20 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
-            color: white;
-            box-shadow: 0 4px 16px rgba(20, 184, 166, 0.2);
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);
+            color: #0a0d12;
+            box-shadow: 0 8px 24px rgba(0, 212, 170, 0.25);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(20, 184, 166, 0.35);
+            box-shadow: 0 16px 40px rgba(0, 212, 170, 0.4);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--text-primary);
-            border: 1.5px solid var(--border-light);
+            border: 2px solid var(--border-light);
         }
 
         .btn-secondary:hover {
@@ -196,12 +216,11 @@
         }
 
         .hero-stats {
-            display: flex;
-            gap: calc(var(--spacing-unit) * 6);
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: calc(var(--spacing-unit) * 6);
-            padding-top: calc(var(--spacing-unit) * 6);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: calc(var(--spacing-unit) * 5);
+            margin-top: calc(var(--spacing-unit) * 8);
+            padding-top: calc(var(--spacing-unit) * 8);
             border-top: 1px solid var(--border-color);
         }
 
@@ -209,9 +228,9 @@
             text-align: center;
         }
 
-        .stat-number {
-            font-size: 32px;
-            font-weight: 800;
+        .stat-value {
+            font-size: 36px;
+            font-weight: 900;
             background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -220,28 +239,34 @@
 
         .stat-label {
             font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: calc(var(--spacing-unit) * 1);
+            color: var(--text-muted);
+            margin-top: calc(var(--spacing-unit) * 1.5);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
+            letter-spacing: 0.8px;
+            font-weight: 700;
         }
 
-        /* Features Section */
-        .features {
-            padding: calc(var(--spacing-unit) * 14) calc(var(--spacing-unit) * 4);
+        /* Features */
+        .features-section {
+            padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
+            background: linear-gradient(180deg, rgba(67, 97, 238, 0.05) 0%, rgba(0, 212, 170, 0.05) 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-container {
             max-width: 1280px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: calc(var(--spacing-unit) * 12);
+            margin-bottom: calc(var(--spacing-unit) * 14);
         }
 
         .section-header h2 {
-            font-size: 44px;
-            font-weight: 800;
+            font-size: 48px;
+            font-weight: 900;
             margin-bottom: calc(var(--spacing-unit) * 3);
             letter-spacing: -1px;
         }
@@ -249,24 +274,23 @@
         .section-header p {
             font-size: 18px;
             color: var(--text-secondary);
-            max-width: 550px;
+            max-width: 600px;
             margin: 0 auto;
-            line-height: 1.7;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: calc(var(--spacing-unit) * 5);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: calc(var(--spacing-unit) * 6);
         }
 
         .feature-card {
-            background: linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(22, 27, 34, 0.6) 100%);
+            background: linear-gradient(135deg, rgba(20, 25, 31, 0.8) 0%, rgba(15, 20, 25, 0.8) 100%);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: calc(var(--spacing-unit) * 7);
+            padding: calc(var(--spacing-unit) * 8);
             backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
         }
@@ -278,15 +302,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.05) 0%, transparent 100%);
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.05) 0%, transparent 100%);
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.4s;
         }
 
         .feature-card:hover {
             border-color: var(--accent-primary);
-            transform: translateY(-6px);
-            box-shadow: 0 16px 32px rgba(20, 184, 166, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 212, 170, 0.1);
         }
 
         .feature-card:hover::before {
@@ -294,23 +318,30 @@
         }
 
         .feature-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-            border-radius: 14px;
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
             margin-bottom: calc(var(--spacing-unit) * 4);
-            box-shadow: 0 8px 16px rgba(20, 184, 166, 0.2);
+            box-shadow: 0 12px 24px rgba(0, 212, 170, 0.2);
+        }
+
+        .feature-icon svg {
+            width: 36px;
+            height: 36px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
         }
 
         .feature-card h3 {
-            font-size: 19px;
+            font-size: 20px;
             margin-bottom: calc(var(--spacing-unit) * 2.5);
-            font-weight: 700;
-            letter-spacing: -0.3px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .feature-card p {
@@ -319,148 +350,109 @@
             line-height: 1.8;
         }
 
-        /* Tech Stack */
-        .tech-stack {
-            padding: calc(var(--spacing-unit) * 14) calc(var(--spacing-unit) * 4);
-            background: linear-gradient(135deg, rgba(31, 41, 55, 0.7) 0%, rgba(22, 27, 34, 0.7) 100%);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+        /* How It Works */
+        .how-it-works {
+            padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
         }
 
-        .tech-content {
-            max-width: 1280px;
-            margin: 0 auto;
+        .steps-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: calc(var(--spacing-unit) * 10);
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(var(--spacing-unit) * 4);
+            margin-top: calc(var(--spacing-unit) * 8);
         }
 
-        .tech-info h2 {
-            font-size: 44px;
+        .step {
+            position: relative;
+            padding: calc(var(--spacing-unit) * 3);
+        }
+
+        .step-num {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .step h3 {
+            font-size: 18px;
             font-weight: 800;
-            margin-bottom: calc(var(--spacing-unit) * 4);
-            letter-spacing: -1px;
+            margin-bottom: calc(var(--spacing-unit) * 2);
         }
 
-        .tech-info p {
-            color: var(--text-secondary);
-            margin-bottom: calc(var(--spacing-unit) * 5);
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        .tech-list {
-            list-style: none;
-        }
-
-        .tech-list li {
-            padding: calc(var(--spacing-unit) * 2) 0;
-            color: var(--text-secondary);
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: calc(var(--spacing-unit) * 2.5);
-            font-weight: 500;
-        }
-
-        .tech-list li:before {
-            content: "✓";
-            color: var(--accent-primary);
-            font-weight: 800;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .tech-visual {
-            background: var(--bg-tertiary);
-            border-radius: 16px;
-            padding: calc(var(--spacing-unit) * 8);
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 340px;
-        }
-
-        .tech-visual code {
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        .step p {
             font-size: 14px;
-            color: var(--accent-primary);
-            text-align: left;
-            white-space: pre-wrap;
-            word-break: break-word;
-            line-height: 1.6;
+            color: var(--text-secondary);
+            line-height: 1.7;
         }
 
-        /* Social Links */
+        /* Social */
         .social-section {
             padding: calc(var(--spacing-unit) * 14) calc(var(--spacing-unit) * 4);
-            max-width: 1280px;
-            margin: 0 auto;
             text-align: center;
         }
 
         .social-section h2 {
             font-size: 44px;
-            font-weight: 800;
+            font-weight: 900;
             margin-bottom: calc(var(--spacing-unit) * 6);
-            letter-spacing: -1px;
         }
 
         .social-links {
             display: flex;
-            gap: calc(var(--spacing-unit) * 4);
+            gap: calc(var(--spacing-unit) * 3);
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             width: 56px;
             height: 56px;
             border-radius: 12px;
             background: var(--bg-tertiary);
             border: 1.5px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
             color: var(--text-secondary);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             font-size: 24px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .social-link:hover {
             background: var(--accent-primary);
             border-color: var(--accent-primary);
-            color: white;
+            color: #0a0d12;
             transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(20, 184, 166, 0.3);
+            box-shadow: 0 12px 24px rgba(0, 212, 170, 0.3);
         }
 
-        /* CTA Section */
+        /* CTA Final */
         .cta-final {
-            padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
-            max-width: 950px;
-            margin: 0 auto;
+            padding: calc(var(--spacing-unit) * 18) calc(var(--spacing-unit) * 4);
             text-align: center;
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.05) 0%, rgba(67, 97, 238, 0.05) 100%);
+            border-top: 1px solid var(--border-color);
         }
 
         .cta-final h2 {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: calc(var(--spacing-unit) * 3);
-            letter-spacing: -1px;
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            letter-spacing: -1.5px;
         }
 
         .cta-final p {
-            color: var(--text-secondary);
             font-size: 18px;
-            margin-bottom: calc(var(--spacing-unit) * 7);
-            max-width: 620px;
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--spacing-unit) * 8);
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.7;
         }
 
         /* Footer */
@@ -475,7 +467,6 @@
         footer a {
             color: var(--accent-primary);
             text-decoration: none;
-            transition: color 0.2s;
         }
 
         footer a:hover {
@@ -484,16 +475,8 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .logo {
-                gap: calc(var(--spacing-unit) * 1);
-            }
-
-            .logo-main {
-                font-size: 16px;
-            }
-
             .hero h1 {
-                font-size: 42px;
+                font-size: 48px;
             }
 
             .hero p {
@@ -502,60 +485,33 @@
 
             .cta-group {
                 flex-direction: column;
-                align-items: stretch;
+                width: 100%;
             }
 
             .btn {
                 width: 100%;
-                padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 4);
             }
 
-            .section-header h2,
-            .cta-final h2,
-            .tech-info h2,
-            .social-section h2 {
-                font-size: 32px;
+            .section-header h2 {
+                font-size: 36px;
             }
 
-            .tech-content {
-                grid-template-columns: 1fr;
-                gap: calc(var(--spacing-unit) * 6);
-            }
-
-            .tech-visual {
-                min-height: 280px;
-                padding: calc(var(--spacing-unit) * 6);
-            }
-
-            .tech-visual code {
-                font-size: 12px;
-            }
-
-            .social-links {
-                gap: calc(var(--spacing-unit) * 2.5);
-            }
-
-            nav {
-                flex-direction: column;
-                gap: calc(var(--spacing-unit) * 2);
-            }
-
-            .hero-stats {
-                gap: calc(var(--spacing-unit) * 4);
+            .cta-final h2 {
+                font-size: 40px;
             }
 
             .feature-icon {
-                width: 56px;
-                height: 56px;
-                font-size: 28px;
+                width: 64px;
+                height: 64px;
             }
-        }
 
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+            .feature-icon svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .nav-links {
+                display: none;
             }
         }
     </style>
@@ -564,127 +520,159 @@
     <!-- Navigation -->
     <nav>
         <a href="#" class="logo">
+            <div class="logo-icon">V</div>
             <div class="logo-text">
                 <div class="logo-main">VIC</div>
-                <div class="logo-version">v3</div>
+                <div class="logo-sub">Betting Signals</div>
             </div>
         </a>
-        <a href="https://github.com/oddsifylabs/vic" class="nav-link">GitHub</a>
+        <div class="nav-links">
+            <a href="https://github.com/oddsifylabs/vic">GitHub</a>
+            <a href="https://x.com/FreeVICSignals">Signals</a>
+        </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
-        <div class="version-badge">Now Available – VIC v3</div>
-        <h1>
-            <span class="highlight">Vegas Intelligence</span><br>
-            Console
-        </h1>
-        <p>Real-time signal intelligence for serious bettors. Deploy in seconds with Railway. Build your edge.</p>
+        <div class="hero-badge">Sports Betting Intelligence</div>
+        <h1>Find <span class="grad">+EV Signals</span><br>Before the Market</h1>
+        <p>VIC scans 10+ sports in real-time to identify profitable betting opportunities. Deploy your edge with precision and speed.</p>
+        
         <div class="cta-group">
             <a href="https://railway.com/deploy/vegasintelligenceconsole?referralCode=3WX7iH&utm_medium=integration&utm_source=template&utm_campaign=generic" class="btn btn-primary">
-                Deploy on Railway
+                Deploy VIC Now
             </a>
             <a href="https://github.com/oddsifylabs/vic" class="btn btn-secondary">
-                View on GitHub
+                View Source Code
             </a>
         </div>
 
         <div class="hero-stats">
             <div class="stat">
-                <div class="stat-number">10+</div>
+                <div class="stat-value">10+</div>
                 <div class="stat-label">Sports Covered</div>
             </div>
             <div class="stat">
-                <div class="stat-number">Real-Time</div>
+                <div class="stat-value">Real-Time</div>
                 <div class="stat-label">Signal Detection</div>
             </div>
             <div class="stat">
-                <div class="stat-number">1-Click</div>
+                <div class="stat-value">1-Click</div>
                 <div class="stat-label">Deploy</div>
             </div>
         </div>
     </section>
 
     <!-- Features -->
-    <section class="features">
-        <div class="section-header">
-            <h2>Powerful Intelligence Features</h2>
-            <p>Everything you need to stay ahead of the market and hunt edges</p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📡</div>
-                <h3>Real-Time Signals</h3>
-                <p>Live data feeds across 10+ sports. Scan odds movements, track sharp action, and spot anomalies in seconds.</p>
+    <section class="features-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Intelligent Betting Engine</h2>
+                <p>Everything you need to identify and capitalize on sports betting edges</p>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <h3>Instant Deployment</h3>
-                <p>One-click deploy to Railway. No infrastructure headaches. Scales automatically as you grow.</p>
-            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="12 1 15 9 23 9 17 14 19 22 12 18 5 22 7 14 1 9 9 9"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Signal Scanning</h3>
+                    <p>Continuous monitoring across major sportsbooks. Detect sharp action, line movements, and market anomalies instantly.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🎲</div>
-                <h3>Signal Detection</h3>
-                <p>Automated scanning for +EV opportunities. Get alerts on key market movements before they move.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>EV Analysis</h3>
+                    <p>Automatic expected value calculation. Find +EV opportunities that meet your risk parameters and edge thresholds.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Secure & Private</h3>
-                <p>Built with security first. Your data stays private. Self-hosted or cloud-deployed on your terms.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Real-Time Alerts</h3>
+                    <p>Instant notifications when your criteria are met. Never miss a profitable opportunity again—act before the market corrects.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">⚙️</div>
-                <h3>Customizable</h3>
-                <p>Open source. Extend with custom rules, integrations, and workflows. Built for developers.</p>
-            </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 1v22M1 12h22"></path>
+                            <circle cx="12" cy="12" r="11" fill="none"></circle>
+                        </svg>
+                    </div>
+                    <h3>Multi-Sport Coverage</h3>
+                    <p>NFL, NBA, MLB, NHL, MMA, EPL, Soccer, Tennis, and more. Diversify your edge across multiple betting markets simultaneously.</p>
+                </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Performance Metrics</h3>
-                <p>Track your signals over time. Measure ROI, win rate, and signal quality in one dashboard.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l2.9-8.7a8.38 8.38 0 0 1 .9-3.8 8.5 8.5 0 0 1 7.6-4.7 8.38 8.38 0 0 1 3.8.9L21 3l-2.9 8.5z"></path>
+                        </svg>
+                    </div>
+                    <h3>Custom Rules Engine</h3>
+                    <p>Define your own betting criteria. Filter by sport, market, odds range, bankroll allocation, and custom strategies.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </div>
+                    <h3>Performance Dashboard</h3>
+                    <p>Track ROI, win rate, and signal quality over time. Make data-driven decisions to refine your betting strategy.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Tech Stack -->
-    <section class="tech-stack">
-        <div class="tech-content">
-            <div class="tech-info">
-                <h2>Built for Serious Traders</h2>
-                <p>VIC v3 is a production-grade console built on modern tech. Deploy anywhere, integrate everywhere. Battle-tested for real-world trading.</p>
-                
-                <ul class="tech-list">
-                    <li>Node.js + Express backend</li>
-                    <li>Real-time data pipelines</li>
-                    <li>PostgreSQL persistence</li>
-                    <li>REST & WebSocket APIs</li>
-                    <li>Multi-sport coverage</li>
-                    <li>Custom alert rules</li>
-                </ul>
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>How VIC Works</h2>
+                <p>Three steps to deploy your betting intelligence system</p>
             </div>
 
-            <div class="tech-visual">
-                <code>$ npm run dev
-✓ Server running on :3000
-✓ Database synced
-✓ Signals initialized
-✓ Real-time feeds active
-
-Ready to hunt edges →</code>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <h3>Deploy</h3>
+                    <p>Click deploy and VIC is live in production within minutes on Railway. Zero infrastructure setup required.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <h3>Configure</h3>
+                    <p>Set your signal parameters: sports, markets, EV thresholds, and alert preferences. Fully customizable.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <h3>Execute</h3>
+                    <p>Receive real-time signals and execute bets with precision. Track performance and refine your edge continuously.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Social & Community -->
+    <!-- Social -->
     <section class="social-section">
-        <h2>Stay Connected</h2>
+        <h2>Stay Updated</h2>
         <div class="social-links">
-            <a href="https://x.com/FreeVICSignals" class="social-link" title="VIC Signals on X">
+            <a href="https://x.com/FreeVICSignals" class="social-link" title="Follow VIC Signals on X">
                 𝕏
             </a>
             <a href="https://github.com/oddsifylabs/vic" class="social-link" title="GitHub">
@@ -698,25 +686,26 @@ Ready to hunt edges →</code>
 
     <!-- Final CTA -->
     <section class="cta-final">
-        <h2>Ready to Deploy?</h2>
-        <p>Get VIC running in production within minutes. One click on Railway, full control in your hands. No waiting. No friction. Just speed.</p>
+        <h2>Deploy VIC Today</h2>
+        <p>Get your betting intelligence system live in production right now. One click to start finding +EV signals before the market does.</p>
+        
         <div class="cta-group">
             <a href="https://railway.com/deploy/vegasintelligenceconsole?referralCode=3WX7iH&utm_medium=integration&utm_source=template&utm_campaign=generic" class="btn btn-primary">
-                Deploy Now
+                Deploy on Railway
             </a>
             <a href="https://github.com/oddsifylabs/vic" class="btn btn-secondary">
-                Explore GitHub
+                View GitHub
             </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 <a href="https://www.oddsifylabs.com">Oddsify Labs</a>. VIC v3 is open source. Built in public. <a href="https://github.com/oddsifylabs/vic-landing">Join us on GitHub.</a></p>
+        <p>© 2025 <a href="https://www.oddsifylabs.com">Oddsify Labs</a>. VIC is open source. <a href="https://github.com/oddsifylabs/vic-landing">Built in public.</a> | <a href="https://ncpgambling.org">Gambling Risk Awareness</a></p>
     </footer>
 
     <script>
-        // Smooth scroll behavior for any anchor links
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
