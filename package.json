@@ -1,0 +1,23 @@
+{
+  "name": "vic-landing",
+  "version": "1.0.0",
+  "description": "VIC - Vegas Intelligence Console landing page",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "vic",
+    "vegas",
+    "intelligence",
+    "betting",
+    "signals"
+  ],
+  "author": "Oddsify Labs",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

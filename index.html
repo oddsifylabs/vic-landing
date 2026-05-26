@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VIC - Vegas Intelligence Console. Real-time signal intelligence for serious bettors. Deploy in seconds with Railway.">
+    <meta name="og:title" content="VIC - Vegas Intelligence Console">
+    <meta name="og:description" content="Real-time signal intelligence for serious bettors. Deploy in seconds with Railway.">
+    <meta name="og:image" content="https://www.oddsifylabs.com/og-image.jpg">
+    <title>VIC - Vegas Intelligence Console</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #0f1535;
+            --bg-tertiary: #1a2449;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --text-muted: #718096;
+            --accent-primary: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-secondary: #10b981;
+            --border-color: #2d3748;
+            --success: #10b981;
+            --spacing-unit: 8px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo span {
+            color: var(--accent-primary);
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 2);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--spacing-unit) * 1);
+            padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 4);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        /* Features Section */
+        .features {
+            padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 4);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 10);
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(var(--spacing-unit) * 4);
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(26, 36, 73, 0.4) 0%, rgba(15, 21, 53, 0.4) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: calc(var(--spacing-unit) * 6);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.1);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Social Links */
+        .social-section {
+            padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 4);
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+        }
+
+        .social-links {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 3);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            padding: calc(var(--spacing-unit) * 12) calc(var(--spacing-unit) * 4);
+            background: linear-gradient(135deg, rgba(26, 36, 73, 0.5) 0%, rgba(15, 21, 53, 0.5) 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tech-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing-unit) * 8);
+            align-items: center;
+        }
+
+        .tech-info h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .tech-info p {
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .tech-list {
+            list-style: none;
+        }
+
+        .tech-list li {
+            padding: calc(var(--spacing-unit) * 1.5) 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: calc(var(--spacing-unit) * 2);
+        }
+
+        .tech-list li:before {
+            content: "✓";
+            color: var(--success);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .tech-visual {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: calc(var(--spacing-unit) * 8);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .tech-visual code {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+            color: var(--success);
+            text-align: left;
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.5;
+        }
+
+        /* CTA Section */
+        .cta-final {
+            padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .cta-final p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            margin-bottom: calc(var(--spacing-unit) * 6);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 4);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .tech-content {
+                grid-template-columns: 1fr;
+                gap: calc(var(--spacing-unit) * 4);
+            }
+
+            .tech-visual {
+                min-height: auto;
+                padding: calc(var(--spacing-unit) * 4);
+            }
+
+            .social-links {
+                gap: calc(var(--spacing-unit) * 2);
+            }
+
+            nav {
+                flex-direction: column;
+                gap: calc(var(--spacing-unit) * 2);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">VIC <span>Console</span></a>
+        <a href="https://github.com/oddsifylabs/vic-landing">GitHub</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>
+            <span class="highlight">Vegas Intelligence</span><br>
+            Console
+        </h1>
+        <p>Real-time signal intelligence for serious bettors. Deploy in seconds with Railway.</p>
+        <div class="cta-group">
+            <a href="https://railway.com/deploy/vegasintelligenceconsole?referralCode=3WX7iH&utm_medium=integration&utm_source=template&utm_campaign=generic" class="btn btn-primary">
+                Deploy on Railway
+            </a>
+            <a href="https://github.com/oddsifylabs/vic" class="btn btn-secondary">
+                View on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="section-header">
+            <h2>Powerful Intelligence Features</h2>
+            <p>Everything you need to stay ahead of the market</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Real-Time Signals</h3>
+                <p>Live data feeds across 10+ sports. Scan odds movements, track sharp action, and spot anomalies in seconds.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Deployment</h3>
+                <p>One-click deploy to Railway. No infrastructure headaches. Scales automatically as you grow.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Signal Detection</h3>
+                <p>Automated scanning for +EV opportunities. Get alerts on key market movements before they move.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Secure & Private</h3>
+                <p>Built with security first. Your data stays private. Self-hosted or cloud-deployed on your terms.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛠️</div>
+                <h3>Customizable</h3>
+                <p>Open source. Extend with custom rules, integrations, and workflows. Built for developers.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Performance Metrics</h3>
+                <p>Track your signals over time. Measure ROI, win rate, and signal quality in one dashboard.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack">
+        <div class="tech-content">
+            <div class="tech-info">
+                <h2>Built for Serious Traders</h2>
+                <p>VIC is a production-grade console built on modern tech. Deploy anywhere, integrate everywhere.</p>
+                
+                <ul class="tech-list">
+                    <li>Node.js + Express backend</li>
+                    <li>Real-time data pipelines</li>
+                    <li>PostgreSQL persistence</li>
+                    <li>REST & WebSocket APIs</li>
+                    <li>Multi-sport coverage</li>
+                    <li>Custom alert rules</li>
+                </ul>
+            </div>
+
+            <div class="tech-visual">
+                <code>$ npm run dev
+✓ Server running on :3000
+✓ Database synced
+✓ Signals initialized
+
+Ready to hunt edges →</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social & Community -->
+    <section class="social-section">
+        <h2>Stay Connected</h2>
+        <div class="social-links">
+            <a href="https://x.com/FreeVICSignals" class="social-link" title="VIC Signals on X">
+                𝕏
+            </a>
+            <a href="https://github.com/oddsifylabs/vic" class="social-link" title="GitHub">
+                ⚙️
+            </a>
+            <a href="https://www.oddsifylabs.com" class="social-link" title="Oddsify Labs">
+                🏢
+            </a>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-final">
+        <h2>Ready to Deploy?</h2>
+        <p>Get VIC running in production within minutes. One click on Railway, full control in your hands.</p>
+        <div class="cta-group">
+            <a href="https://railway.com/deploy/vegasintelligenceconsole?referralCode=3WX7iH&utm_medium=integration&utm_source=template&utm_campaign=generic" class="btn btn-primary">
+                Deploy Now
+            </a>
+            <a href="https://github.com/oddsifylabs/vic" class="btn btn-secondary">
+                Explore GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 <a href="https://www.oddsifylabs.com">Oddsify Labs</a>. VIC Landing Page is open source. Built in public. <a href="https://github.com/oddsifylabs/vic-landing">Join us on GitHub.</a></p>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior for any anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
