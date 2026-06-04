@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VIC - Vegas Intelligence Console. Real-time sports betting signals and market intelligence. Find +EV opportunities across 10+ sports.">
+    <meta name="description" content="VIC - Vegas Intelligence Console. AI-powered sports betting signals across 10 sports. Choose your tier: USB, SaaS, or Full AI Agent.">
     <meta name="og:title" content="VIC - Vegas Intelligence Console">
-    <meta name="og:description" content="Real-time sports betting signals and market intelligence for serious bettors.">
-    <title>VIC - Vegas Intelligence Console</title>
+    <meta name="og:description" content="AI-powered sports betting intelligence. 62-70% win rate target. 10 sports. 4 product tiers.">
+    <title>VIC - Vegas Intelligence Console | Oddsify Labs</title>
     <style>
         * {
             margin: 0;
@@ -25,6 +25,7 @@
             --accent-primary: #00d4aa;
             --accent-secondary: #ff6b35;
             --accent-tertiary: #4361ee;
+            --accent-kiosk: #f472b6;
             --border-color: #1f2937;
             --border-light: #2d3748;
             --success: #00d4aa;
@@ -246,8 +247,8 @@
             font-weight: 700;
         }
 
-        /* Features */
-        .features-section {
+        /* Products Section */
+        .products-section {
             padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
             background: linear-gradient(180deg, rgba(67, 97, 238, 0.05) 0%, rgba(0, 212, 170, 0.05) 100%);
             border-top: 1px solid var(--border-color);
@@ -278,13 +279,13 @@
             margin: 0 auto;
         }
 
-        .features-grid {
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: calc(var(--spacing-unit) * 6);
         }
 
-        .feature-card {
+        .product-card {
             background: linear-gradient(135deg, rgba(20, 25, 31, 0.8) 0%, rgba(15, 20, 25, 0.8) 100%);
             border: 1px solid var(--border-color);
             border-radius: 16px;
@@ -293,9 +294,11 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        .feature-card::before {
+        .product-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -307,19 +310,42 @@
             transition: opacity 0.4s;
         }
 
-        .feature-card:hover {
+        .product-card:hover {
             border-color: var(--accent-primary);
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0, 212, 170, 0.1);
         }
 
-        .feature-card:hover::before {
+        .product-card:hover::before {
             opacity: 1;
         }
 
-        .feature-icon {
-            width: 72px;
-            height: 72px;
+        .product-card.featured {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 40px rgba(0, 212, 170, 0.15);
+        }
+
+        .product-card.featured::before {
+            opacity: 0.3;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: calc(var(--spacing-unit) * 3);
+            right: calc(var(--spacing-unit) * 3);
+            background: var(--accent-primary);
+            color: #0a0d12;
+            font-size: 11px;
+            font-weight: 800;
+            padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-icon {
+            width: 64px;
+            height: 64px;
             background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);
             border-radius: 16px;
             display: flex;
@@ -327,132 +353,184 @@
             justify-content: center;
             margin-bottom: calc(var(--spacing-unit) * 4);
             box-shadow: 0 12px 24px rgba(0, 212, 170, 0.2);
+            font-size: 28px;
         }
 
-        .feature-icon svg {
-            width: 36px;
-            height: 36px;
-            stroke: white;
-            stroke-width: 2;
-            fill: none;
+        .product-card.kiosk .product-icon {
+            background: linear-gradient(135deg, var(--accent-kiosk) 0%, var(--accent-tertiary) 100%);
         }
 
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: calc(var(--spacing-unit) * 2.5);
+        .product-card h3 {
+            font-size: 24px;
+            margin-bottom: calc(var(--spacing-unit) * 1);
             font-weight: 800;
             letter-spacing: -0.5px;
         }
 
-        .feature-card p {
+        .product-card .price {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--accent-primary);
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .product-card .price span {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .product-card p {
             color: var(--text-secondary);
             font-size: 15px;
             line-height: 1.8;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            flex-grow: 1;
         }
 
-        /* How It Works */
-        .how-it-works {
+        .product-features {
+            list-style: none;
+            margin-bottom: calc(var(--spacing-unit) * 5);
+        }
+
+        .product-features li {
+            padding: calc(var(--spacing-unit) * 1.5) 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 14px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--spacing-unit) * 1.5);
+        }
+
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            color: var(--accent-primary);
+            font-weight: 900;
+            font-size: 16px;
+        }
+
+        .product-card .btn {
+            width: 100%;
+        }
+
+        /* Sports Section */
+        .sports-section {
             padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
         }
 
-        .steps-grid {
+        .sports-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: calc(var(--spacing-unit) * 4);
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: calc(var(--spacing-unit) * 3);
             margin-top: calc(var(--spacing-unit) * 8);
         }
 
-        .step {
-            position: relative;
-            padding: calc(var(--spacing-unit) * 3);
+        .sport-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: calc(var(--spacing-unit) * 4);
+            text-align: center;
+            transition: all 0.3s;
         }
 
-        .step-num {
+        .sport-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 212, 170, 0.1);
+        }
+
+        .sport-icon {
+            font-size: 32px;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .sport-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Joshua Section */
+        .joshua-section {
+            padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(0, 212, 170, 0.1) 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .joshua-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .joshua-badge {
+            display: inline-block;
+            background: rgba(67, 97, 238, 0.2);
+            border: 1px solid var(--accent-tertiary);
+            border-radius: 24px;
+            padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2.5);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+        }
+
+        .joshua-section h2 {
             font-size: 48px;
+            font-weight: 900;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            letter-spacing: -1px;
+        }
+
+        .joshua-section p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--spacing-unit) * 6);
+            line-height: 1.8;
+        }
+
+        .joshua-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: calc(var(--spacing-unit) * 5);
+            margin-top: calc(var(--spacing-unit) * 8);
+            padding: calc(var(--spacing-unit) * 6);
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .joshua-stat {
+            text-align: center;
+        }
+
+        .joshua-stat-value {
+            font-size: 42px;
             font-weight: 900;
             background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: calc(var(--spacing-unit) * 2);
         }
 
-        .step h3 {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: calc(var(--spacing-unit) * 2);
-        }
-
-        .step p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* Social */
-        .social-section {
-            padding: calc(var(--spacing-unit) * 14) calc(var(--spacing-unit) * 4);
-            text-align: center;
-        }
-
-        .social-section h2 {
-            font-size: 44px;
-            font-weight: 900;
-            margin-bottom: calc(var(--spacing-unit) * 6);
-        }
-
-        .social-links {
-            display: flex;
-            gap: calc(var(--spacing-unit) * 3);
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
-            background: var(--bg-tertiary);
-            border: 1.5px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 24px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .social-link:hover {
-            background: var(--accent-primary);
-            border-color: var(--accent-primary);
-            color: #0a0d12;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 212, 170, 0.3);
-        }
-
-        /* CTA Final */
-        .cta-final {
-            padding: calc(var(--spacing-unit) * 18) calc(var(--spacing-unit) * 4);
-            text-align: center;
-            background: linear-gradient(135deg, rgba(0, 212, 170, 0.05) 0%, rgba(67, 97, 238, 0.05) 100%);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .cta-final h2 {
-            font-size: 56px;
-            font-weight: 900;
-            margin-bottom: calc(var(--spacing-unit) * 4);
-            letter-spacing: -1.5px;
-        }
-
-        .cta-final p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: calc(var(--spacing-unit) * 8);
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
+        .joshua-stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: calc(var(--spacing-unit) * 1.5);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 700;
         }
 
         /* Footer */
@@ -471,47 +549,6 @@
 
         footer a:hover {
             color: var(--accent-secondary);
-        }
-
-        /* Scroll to Top Button */
-        .scroll-to-top {
-            position: fixed;
-            bottom: calc(var(--spacing-unit) * 6);
-            right: calc(var(--spacing-unit) * 6);
-            width: 52px;
-            height: 52px;
-            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);
-            border: none;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 8px 24px rgba(0, 212, 170, 0.3);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 99;
-        }
-
-        .scroll-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .scroll-to-top:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(0, 212, 170, 0.4);
-        }
-
-        .scroll-to-top svg {
-            width: 24px;
-            height: 24px;
-            stroke: white;
-            stroke-width: 3;
-            fill: none;
         }
 
         /* Responsive */
@@ -537,50 +574,30 @@
                 font-size: 36px;
             }
 
-            .cta-final h2 {
-                font-size: 40px;
-            }
-
-            .feature-icon {
-                width: 64px;
-                height: 64px;
-            }
-
-            .feature-icon svg {
-                width: 32px;
-                height: 32px;
+            .joshua-stats {
+                grid-template-columns: 1fr;
             }
 
             .nav-links {
                 display: none;
             }
-
-            .scroll-to-top {
-                bottom: calc(var(--spacing-unit) * 4);
-                right: calc(var(--spacing-unit) * 4);
-                width: 48px;
-                height: 48px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-        <svg viewBox="0 0 24 24">
-            <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-    </button>
     <!-- Navigation -->
     <nav>
         <a href="#" class="logo">
             <div class="logo-icon">V</div>
             <div class="logo-text">
                 <div class="logo-main">VIC</div>
-                <div class="logo-sub">Betting Signals</div>
+                <div class="logo-sub">by Oddsify Labs</div>
             </div>
         </a>
         <div class="nav-links">
+            <a href="#products">Products</a>
+            <a href="#sports">Sports</a>
+            <a href="#joshua">Joshua AI</a>
             <a href="https://github.com/oddsifylabs/vic">GitHub</a>
             <a href="https://x.com/FreeVICSignals">Signals</a>
         </div>
@@ -588,205 +605,214 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-badge">Sports Betting Intelligence</div>
-        <h1>Find <span class="grad">+EV Signals</span><br>Before the Market</h1>
-        <p>VIC scans 10+ sports in real-time to identify profitable betting opportunities. Deploy your edge with precision and speed.</p>
+        <div class="hero-badge">AI-Powered Betting Intelligence</div>
+        <h1>Beat the Market with<br><span class="grad">Joshua AI</span></h1>
+        <p>VIC is the Vegas Intelligence Console — AI-powered sports betting signals targeting 62-70% win rate across 10 sports. Choose your deployment: USB, SaaS, or Full AI Agent.</p>
         
         <div class="cta-group">
-            <a href="https://railway.com/deploy/vegasintelligenceconsole?referralCode=3WX7iH&utm_medium=integration&utm_source=template&utm_campaign=generic" class="btn btn-primary">
-                Deploy VIC Now
+            <a href="#products" class="btn btn-primary">
+                View Products
             </a>
             <a href="https://github.com/oddsifylabs/vic" class="btn btn-secondary">
-                View Source Code
+                View Source
             </a>
         </div>
 
         <div class="hero-stats">
             <div class="stat">
-                <div class="stat-value">10+</div>
-                <div class="stat-label">Sports Covered</div>
+                <div class="stat-value">10</div>
+                <div class="stat-label">Sports</div>
             </div>
             <div class="stat">
-                <div class="stat-value">Real-Time</div>
+                <div class="stat-value">62-70%</div>
+                <div class="stat-label">Target Win Rate</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Product Tiers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">24/7</div>
                 <div class="stat-label">Signal Detection</div>
             </div>
-            <div class="stat">
-                <div class="stat-value">1-Click</div>
-                <div class="stat-label">Deploy</div>
-            </div>
         </div>
     </section>
 
-    <!-- Features -->
-    <section class="features-section">
+    <!-- Products -->
+    <section class="products-section" id="products">
         <div class="section-container">
             <div class="section-header">
-                <h2>Intelligent Betting Engine</h2>
-                <p>Everything you need to identify and capitalize on sports betting edges</p>
+                <h2>Choose Your VIC</h2>
+                <p>Four product tiers — same Joshua AI engine, different deployment models</p>
             </div>
 
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <polyline points="12 1 15 9 23 9 17 14 19 22 12 18 5 22 7 14 1 9 9 9"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Signal Scanning</h3>
-                    <p>Continuous monitoring across major sportsbooks. Detect sharp action, line movements, and market anomalies instantly.</p>
+            <div class="products-grid">
+                <!-- VIC Pro -->
+                <div class="product-card featured">
+                    <div class="product-badge">Most Popular</div>
+                    <div class="product-icon">💾</div>
+                    <h3>VIC Pro</h3>
+                    <div class="price">$99 <span>one-time</span></div>
+                    <p>USB deployment — own your data, run locally, lifetime updates. Perfect for serious bettors who want full control.</p>
+                    <ul class="product-features">
+                        <li>USB drive deployment</li>
+                        <li>Joshua AI signal analysis</li>
+                        <li>62-70% win rate target</li>
+                        <li>10 sports coverage</li>
+                        <li>Lifetime updates</li>
+                        <li>No subscription required</li>
+                        <li>Full data ownership</li>
+                    </ul>
+                    <a href="https://github.com/oddsifylabs/vic-v4" class="btn btn-primary">Get VIC Pro</a>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                        </svg>
-                    </div>
-                    <h3>EV Analysis</h3>
-                    <p>Automatic expected value calculation. Find +EV opportunities that meet your risk parameters and edge thresholds.</p>
+                <!-- VIC Terminal -->
+                <div class="product-card">
+                    <div class="product-icon">🖥️</div>
+                    <h3>VIC Terminal</h3>
+                    <div class="price">$29 <span>/month</span></div>
+                    <p>Hosted SaaS — zero setup, auto-updates, accessible anywhere. Best for bettors who want convenience.</p>
+                    <ul class="product-features">
+                        <li>Cloud-hosted deployment</li>
+                        <li>Joshua AI signal analysis</li>
+                        <li>62-70% win rate target</li>
+                        <li>10 sports coverage</li>
+                        <li>Auto-updates included</li>
+                        <li>Access from anywhere</li>
+                        <li>No installation required</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Join Waitlist</a>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Real-Time Alerts</h3>
-                    <p>Instant notifications when your criteria are met. Never miss a profitable opportunity again—act before the market corrects.</p>
+                <!-- VIC Kiosk -->
+                <div class="product-card kiosk">
+                    <div class="product-badge" style="background: var(--accent-kiosk); color: #0a0d12;">Coming Soon</div>
+                    <div class="product-icon">🤖</div>
+                    <h3>VIC Kiosk</h3>
+                    <div class="price">$199 <span>/month</span></div>
+                    <p>Full AI agent — autonomous handicapping, real-time decision making, Joshua speaks for itself. The ultimate edge.</p>
+                    <ul class="product-features">
+                        <li>Full Hermes AI agent</li>
+                        <li>Autonomous bet decisions</li>
+                        <li>Real-time game monitoring</li>
+                        <li>Joshua AI reasoning voice</li>
+                        <li>Auto-explanation of picks</li>
+                        <li>Learning from outcomes</li>
+                        <li>Premium tier access</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary" style="border-color: var(--accent-kiosk); color: var(--accent-kiosk);">Join Waitlist</a>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 1v22M1 12h22"></path>
-                            <circle cx="12" cy="12" r="11" fill="none"></circle>
-                        </svg>
-                    </div>
-                    <h3>Multi-Sport Coverage</h3>
-                    <p>NFL, NBA, MLB, NHL, MMA, EPL, Soccer, Tennis, and more. Diversify your edge across multiple betting markets simultaneously.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l2.9-8.7a8.38 8.38 0 0 1 .9-3.8 8.5 8.5 0 0 1 7.6-4.7 8.38 8.38 0 0 1 3.8.9L21 3l-2.9 8.5z"></path>
-                        </svg>
-                    </div>
-                    <h3>Custom Rules Engine</h3>
-                    <p>Define your own betting criteria. Filter by sport, market, odds range, bankroll allocation, and custom strategies.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24">
-                            <rect x="3" y="3" width="7" height="7"></rect>
-                            <rect x="14" y="3" width="7" height="7"></rect>
-                            <rect x="14" y="14" width="7" height="7"></rect>
-                            <rect x="3" y="14" width="7" height="7"></rect>
-                        </svg>
-                    </div>
-                    <h3>Performance Dashboard</h3>
-                    <p>Track ROI, win rate, and signal quality over time. Make data-driven decisions to refine your betting strategy.</p>
+                <!-- VIC Personal -->
+                <div class="product-card">
+                    <div class="product-icon">⚙️</div>
+                    <h3>VIC Personal</h3>
+                    <div class="price">Free <span>open source</span></div>
+                    <p>Self-hosted — deploy on Railway, full control, experimental features. For developers and tinkerers.</p>
+                    <ul class="product-features">
+                        <li>Self-hosted on Railway</li>
+                        <li>Full source code access</li>
+                        <li>Experimental features</li>
+                        <li>10 sports coverage</li>
+                        <li>Community support</li>
+                        <li>Customizable</li>
+                        <li>Not for public use</li>
+                    </ul>
+                    <a href="https://github.com/oddsifylabs/vic" class="btn btn-secondary">Deploy on Railway</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="how-it-works">
+    <!-- Sports -->
+    <section class="sports-section" id="sports">
         <div class="section-container">
             <div class="section-header">
-                <h2>How VIC Works</h2>
-                <p>Three steps to deploy your betting intelligence system</p>
+                <h2>10 Sports Covered</h2>
+                <p>Joshua analyzes signals across all major sports leagues</p>
             </div>
 
-            <div class="steps-grid">
-                <div class="step">
-                    <div class="step-num">01</div>
-                    <h3>Deploy</h3>
-                    <p>Click deploy and VIC is live in production within minutes on Railway. Zero infrastructure setup required.</p>
+            <div class="sports-grid">
+                <div class="sport-card">
+                    <div class="sport-icon">⚾</div>
+                    <div class="sport-name">MLB</div>
                 </div>
-                <div class="step">
-                    <div class="step-num">02</div>
-                    <h3>Configure</h3>
-                    <p>Set your signal parameters: sports, markets, EV thresholds, and alert preferences. Fully customizable.</p>
+                <div class="sport-card">
+                    <div class="sport-icon">🏀</div>
+                    <div class="sport-name">NBA</div>
                 </div>
-                <div class="step">
-                    <div class="step-num">03</div>
-                    <h3>Execute</h3>
-                    <p>Receive real-time signals and execute bets with precision. Track performance and refine your edge continuously.</p>
+                <div class="sport-card">
+                    <div class="sport-icon">🏈</div>
+                    <div class="sport-name">NFL</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🏒</div>
+                    <div class="sport-name">NHL</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">⚽</div>
+                    <div class="sport-name">MLS</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🏈</div>
+                    <div class="sport-name">NCAAF</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🏀</div>
+                    <div class="sport-name">NCAAB</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">⚽</div>
+                    <div class="sport-name">EPL</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🥊</div>
+                    <div class="sport-name">Boxing</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🥋</div>
+                    <div class="sport-name">MMA</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social -->
-    <section class="social-section">
-        <h2>Stay Updated</h2>
-        <div class="social-links">
-            <a href="https://x.com/FreeVICSignals" class="social-link" title="Follow VIC Signals on X">
-                𝕏
-            </a>
-            <a href="https://github.com/oddsifylabs/vic" class="social-link" title="GitHub">
-                ⚙️
-            </a>
-            <a href="https://www.oddsifylabs.com" class="social-link" title="Oddsify Labs">
-                🏢
-            </a>
-        </div>
-    </section>
+    <!-- Joshua AI -->
+    <section class="joshua-section" id="joshua">
+        <div class="joshua-container">
+            <div class="joshua-badge">The Brains</div>
+            <h2>Meet Joshua AI</h2>
+            <p>Joshua is the AI-powered predictive engine behind VIC — combining Claude AI reasoning with signal detection to achieve 62-70% win rates. Joshua analyzes every signal, assigns confidence scores, and explains the reasoning behind each pick.</p>
 
-    <!-- Final CTA -->
-    <section class="cta-final">
-        <h2>Deploy VIC Today</h2>
-        <p>Get your betting intelligence system live in production right now. One click to start finding +EV signals before the market does.</p>
-        
-        <div class="cta-group">
-            <a href="https://railway.com/deploy/vegasintelligenceconsole?referralCode=3WX7iH&utm_medium=integration&utm_source=template&utm_campaign=generic" class="btn btn-primary">
-                Deploy on Railway
-            </a>
-            <a href="https://github.com/oddsifylabs/vic" class="btn btn-secondary">
-                View GitHub
-            </a>
+            <div class="joshua-stats">
+                <div class="joshua-stat">
+                    <div class="joshua-stat-value">62-70%</div>
+                    <div class="joshua-stat-label">Target Win Rate</div>
+                </div>
+                <div class="joshua-stat">
+                    <div class="joshua-stat-value">6</div>
+                    <div class="joshua-stat-label">Signal Types</div>
+                </div>
+                <div class="joshua-stat">
+                    <div class="joshua-stat-value">24/7</div>
+                    <div class="joshua-stat-label">Active Monitoring</div>
+                </div>
+            </div>
+
+            <div class="cta-group" style="margin-top: calc(var(--spacing-unit) * 8);">
+                <a href="#products" class="btn btn-primary">
+                    Get Joshua AI
+                </a>
+                <a href="https://x.com/FreeVICSignals" class="btn btn-secondary">
+                    See Signals
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 <a href="https://www.oddsifylabs.com">Oddsify Labs</a>. VIC is open source. <a href="https://github.com/oddsifylabs/vic-landing">Built in public.</a> | <a href="https://ncpgambling.org">Gambling Risk Awareness</a></p>
+        <p>© 2026 <a href="https://www.oddsifylabs.com">Oddsify Labs</a>. VIC is open source. <a href="https://github.com/oddsifylabs/vic">Built in public.</a> | <a href="https://ncpgambling.org">Gambling Risk Awareness</a></p>
     </footer>
-
-    <script>
-        // Scroll to Top Button
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        });
-
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
