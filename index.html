@@ -658,6 +658,167 @@
             opacity: 0.8;
         }
 
+        /* Products footnote */
+        .products-footnote {
+            text-align: center;
+            margin-top: calc(var(--spacing-unit) * 8);
+            padding: calc(var(--spacing-unit) * 5);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .products-footnote strong {
+            color: var(--accent-primary);
+        }
+
+        .products-footnote a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* Roadmap Section */
+        .roadmap-section {
+            padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(var(--spacing-unit) * 4);
+            margin-top: calc(var(--spacing-unit) * 8);
+        }
+
+        .roadmap-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: calc(var(--spacing-unit) * 5);
+            transition: all 0.3s;
+        }
+
+        .roadmap-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .roadmap-quarter {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(67, 97, 238, 0.1);
+            border: 1px solid var(--accent-tertiary);
+            color: var(--accent-tertiary);
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .roadmap-card h4 {
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .roadmap-card p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .roadmap-status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .roadmap-status.in-progress {
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--accent-primary);
+        }
+
+        .roadmap-status.planned {
+            background: rgba(67, 97, 238, 0.15);
+            color: var(--accent-tertiary);
+        }
+
+        .roadmap-status.research {
+            background: rgba(255, 107, 53, 0.15);
+            color: var(--accent-secondary);
+        }
+
+        /* Signup timezone note */
+        .signup-tz-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            padding: calc(var(--spacing-unit) * 2);
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .signup-tz-note span {
+            color: var(--accent-primary);
+            font-weight: 700;
+        }
+
+        .signup-tz-note a {
+            color: var(--text-secondary);
+            text-decoration: underline;
+            margin-left: 4px;
+        }
+
+        /* Signed-in pill in nav */
+        .auth-pill {
+            display: none;
+            align-items: center;
+            gap: calc(var(--spacing-unit) * 1);
+            padding: 6px 12px;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid var(--accent-primary);
+            border-radius: 16px;
+            font-size: 12px;
+            color: var(--accent-primary);
+            font-weight: 700;
+        }
+
+        .auth-pill.show {
+            display: inline-flex;
+        }
+
+        .auth-pill-tier {
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+            padding: 1px 6px;
+            background: var(--accent-primary);
+            color: #0a0d12;
+            border-radius: 8px;
+        }
+
+        .auth-pill-signout {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 4px;
+            cursor: pointer;
+        }
+
         /* Track Record Section */
         .track-section {
             padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
@@ -1151,8 +1312,14 @@
             <a href="#sports">Sports</a>
             <a href="#joshua">Joshua AI</a>
             <a href="#track">Track Record</a>
+            <a href="#roadmap">Roadmap</a>
             <a href="https://github.com/oddsifylabs/vic">GitHub</a>
             <a href="https://x.com/FreeVICSignals">Signals</a>
+            <div class="auth-pill" id="auth-pill">
+                <span class="auth-pill-tier" id="auth-pill-tier">Free</span>
+                <span id="auth-pill-email">user@email.com</span>
+                <a class="auth-pill-signout" id="auth-pill-signout" title="Sign out">✕</a>
+            </div>
         </div>
     </nav>
 
@@ -1196,81 +1363,71 @@
         <div class="section-container">
             <div class="section-header">
                 <h2>Choose Your VIC</h2>
-                <p>Four product tiers — same Joshua AI engine, different deployment models. 1 live, 1 shipping, 2 on the way.</p>
+                <p>Same Joshua engine, three tiers. Free shows you the real product — Pro removes the cap.</p>
             </div>
 
             <div class="products-grid">
-                <!-- VIC Personal — Free, live now -->
+                <!-- VIC Free — Open source, 3 picks/day -->
                 <div class="product-card">
-                    <div class="product-badge" style="background: var(--accent-primary); color: #0a0d12;">● Live Now</div>
-                    <div class="product-icon" style="background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);">⚙️</div>
-                    <h3>VIC Personal</h3>
-                    <div class="price">Free<span class="price-unit">Open source · Self-hosted</span></div>
-                    <p>Self-hosted on Railway. Full source code, all 10 sports, experimental features first. For developers and tinkerers who want to own their stack.</p>
+                    <div class="product-badge" style="background: var(--accent-primary); color: #0a0d12;">● Start Free</div>
+                    <div class="product-icon" style="background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);">⚡</div>
+                    <h3>VIC Free</h3>
+                    <div class="price">$0<span class="price-unit">Open source · 3 picks/day</span></div>
+                    <p>The full Joshua engine, all 9 signal types, all 10 sports. Free shows you 3 actionable picks per day. Anonymous browsing shows everything else read-only.</p>
                     <ul class="product-features">
-                        <li>Full source code access</li>
+                        <li>Full Joshua engine — 9 signal types</li>
                         <li>All 10 sports coverage</li>
-                        <li>Self-hosted on Railway</li>
-                        <li>Experimental features first</li>
-                        <li>Community support</li>
-                        <li>Customizable &amp; forkable</li>
+                        <li>3 actionable picks per day</li>
+                        <li>Bet tracker + CLV calculator</li>
+                        <li>Resets at midnight in your timezone</li>
+                        <li>Open source on GitHub</li>
                     </ul>
-                    <a href="https://github.com/oddsifylabs/vic" class="btn btn-primary">Deploy on Railway</a>
+                    <button class="btn btn-primary" data-start-free>Start Free →</button>
                 </div>
 
-                <!-- VIC Pro — USB, $99 one-time -->
+                <!-- VIC Pro — Unlimited picks, $29/mo or $99/yr -->
                 <div class="product-card featured">
-                    <div class="product-badge" style="background: var(--accent-secondary); color: #0a0d12;">● Shipping Now</div>
-                    <div class="product-icon">💾</div>
+                    <div class="product-badge" style="background: var(--accent-secondary); color: #0a0d12;">● Most Popular</div>
+                    <div class="product-icon">🚀</div>
                     <h3>VIC Pro</h3>
-                    <div class="price">$99<span class="price-unit">One-time · Lifetime updates</span></div>
-                    <p>USB drive deployment — own your data, run locally, no subscription. Perfect for serious bettors who want full control and zero recurring cost.</p>
+                    <div class="price">$29<span class="price-unit">Per month · or $99/yr (save 71%)</span></div>
+                    <p>Unlimited picks. Plug in your own Odds API + Claude keys, or use ours. Bankroll engineering, alerts, CSV export, full history. For bettors who want the engine without limits.</p>
                     <ul class="product-features">
-                        <li>USB drive deployment</li>
-                        <li>Joshua AI signal analysis</li>
-                        <li>All 10 sports coverage</li>
-                        <li>Lifetime updates included</li>
-                        <li>No subscription required</li>
-                        <li>Full data ownership</li>
+                        <li><strong>Unlimited picks</strong> per day</li>
+                        <li>BYOK (Odds API + Claude) or shared keys</li>
+                        <li>Bankroll engineering + drawdown tracking</li>
+                        <li>Telegram alerts for +EV signals</li>
+                        <li>Full history + CSV export</li>
+                        <li>5 sportsbook odds comparison</li>
+                        <li>Priority support</li>
                     </ul>
-                    <a href="https://github.com/oddsifylabs/vic-v4" class="btn btn-primary">Get VIC Pro</a>
+                    <button class="btn btn-primary" data-start-pro>Start 7-Day Free Trial →</button>
+                    <div style="text-align:center; margin-top: 8px; font-size: 12px; color: var(--text-muted);">No card required for trial</div>
                 </div>
 
-                <!-- VIC Terminal — SaaS, $29/mo, waitlist -->
+                <!-- VIC Enterprise — $299/yr, 5 seats + API -->
                 <div class="product-card">
-                    <div class="product-badge" style="background: var(--text-muted); color: #0a0d12;">Waitlist</div>
-                    <div class="product-icon">🖥️</div>
-                    <h3>VIC Terminal</h3>
-                    <div class="price">$29<span class="price-unit">Per month · Billed monthly</span></div>
-                    <p>Hosted SaaS — zero setup, auto-updates, accessible from anywhere. Best for bettors who'd rather place bets than manage infrastructure.</p>
+                    <div class="product-badge" style="background: var(--text-muted); color: #0a0d12;">Teams</div>
+                    <div class="product-icon">🏢</div>
+                    <h3>VIC Enterprise</h3>
+                    <div class="price">$299<span class="price-unit">Per year · 5 seats included</span></div>
+                    <p>For small funds, syndicates, and serious bettor groups. 5 seats, API access, white-label reports, custom signal thresholds. BYOK required.</p>
                     <ul class="product-features">
-                        <li>Cloud-hosted deployment</li>
-                        <li>Joshua AI signal analysis</li>
-                        <li>All 10 sports coverage</li>
-                        <li>Auto-updates included</li>
-                        <li>Access from any device</li>
-                        <li>No installation required</li>
+                        <li>5 seats included</li>
+                        <li>Full REST API access</li>
+                        <li>White-label performance reports</li>
+                        <li>Custom signal thresholds</li>
+                        <li>BYOK required (your keys, your control)</li>
+                        <li>Priority email support</li>
+                        <li>Quarterly strategy reviews</li>
                     </ul>
-                    <a href="#" class="btn btn-secondary" data-open-waitlist="terminal">Join Waitlist</a>
+                    <a href="mailto:jesse@oddsifylabs.com?subject=VIC%20Enterprise%20Inquiry" class="btn btn-secondary">Contact Sales →</a>
                 </div>
+            </div>
 
-                <!-- VIC Kiosk — AI agent, TBD, coming soon -->
-                <div class="product-card kiosk">
-                    <div class="product-badge" style="background: var(--accent-kiosk); color: #0a0d12;">Coming Soon</div>
-                    <div class="product-icon">🤖</div>
-                    <h3>VIC Kiosk</h3>
-                    <div class="price">TBD<span class="price-unit">Premium tier · Pricing announced 2026</span></div>
-                    <p>Full AI agent — autonomous handicapping, real-time decision making, Joshua speaks for itself. The ultimate edge: an AI that doesn't just suggest, it decides.</p>
-                    <ul class="product-features">
-                        <li>Full Hermes AI agent</li>
-                        <li>Autonomous bet decisions</li>
-                        <li>Real-time game monitoring</li>
-                        <li>Joshua AI reasoning voice</li>
-                        <li>Auto-explanation of picks</li>
-                        <li>Learns from every outcome</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary" data-open-waitlist="kiosk" style="border-color: var(--accent-kiosk); color: var(--accent-kiosk);">Join Waitlist</a>
-                </div>
+            <div class="products-footnote">
+                <p><strong>Why this works:</strong> Free shows you Joshua's real engine, not a stripped-down demo. The 3-picks/day cap is what makes Pro worth upgrading to. Pro pays for the API quota + your time. Enterprise pays for the workflow.</p>
+                <p style="margin-top: 8px;"><a href="#roadmap">→ See what's coming next (Kiosk roadmap)</a></p>
             </div>
         </div>
     </section>
@@ -1384,7 +1541,42 @@
         </div>
     </section>
 
-    <!-- Track Record Section -->
+    <!-- Roadmap Section (replaces Kiosk as a public product) -->
+    <section class="roadmap-section" id="roadmap">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Roadmap</h2>
+                <p>What we're building next. VIC Kiosk is on the list — but it's not a public product.</p>
+            </div>
+
+            <div class="roadmap-grid">
+                <div class="roadmap-card">
+                    <div class="roadmap-quarter">Q3 2026</div>
+                    <h4>Joshua Baseline Validation</h4>
+                    <p>Building the 62-70% win rate dataset with real settled picks. 30+ days of live tracking, public record, immutable.</p>
+                    <div class="roadmap-status in-progress">In Progress</div>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-quarter">Q4 2026</div>
+                    <h4>Telegram Alert Channel</h4>
+                    <p>Pro users get real-time +EV signals pushed to Telegram. 30s after detection, with reasoning and link to full analysis.</p>
+                    <div class="roadmap-status planned">Planned</div>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-quarter">Q1 2027</div>
+                    <h4>VIC Kiosk (Internal)</h4>
+                    <p>Full AI agent layer — autonomous handicapping. Repositioned as an Enterprise add-on, not a public product. Sportsbook regulatory concerns kept it off the retail roadmap.</p>
+                    <div class="roadmap-status planned">Enterprise Only</div>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-quarter">Q2 2027</div>
+                    <h4>Joshua Self-Tuning</h4>
+                    <p>Joshua starts adjusting signal weights based on settled results. CLV becomes a feedback loop, not just a metric.</p>
+                    <div class="roadmap-status research">Research</div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="track-section" id="track">
         <div class="section-container">
             <div class="section-header">
@@ -1435,41 +1627,40 @@
         </div>
     </section>
 
-    <!-- Waitlist Modal -->
-    <div class="waitlist-modal" id="waitlist-modal" aria-hidden="true">
+    <!-- Free Signup Modal (replaces the old waitlist modal) -->
+    <div class="waitlist-modal" id="signup-modal" aria-hidden="true">
         <div class="waitlist-backdrop" data-close-modal></div>
-        <div class="waitlist-card" role="dialog" aria-modal="true" aria-labelledby="waitlist-title">
+        <div class="waitlist-card" role="dialog" aria-modal="true" aria-labelledby="signup-title">
             <button class="waitlist-close" data-close-modal aria-label="Close">×</button>
-            <div class="waitlist-icon">📬</div>
-            <h3 id="waitlist-title">Join the Waitlist</h3>
-            <p class="waitlist-subtitle" id="waitlist-subtitle">Get notified when VIC Terminal launches.</p>
+            <div class="waitlist-icon">⚡</div>
+            <h3 id="signup-title">Start VIC Free</h3>
+            <p class="waitlist-subtitle" id="signup-subtitle">3 Joshua picks per day. We email you a sign-in link.</p>
 
-            <form class="waitlist-form" id="waitlist-form" novalidate>
+            <form class="waitlist-form" id="signup-form" novalidate>
                 <label class="waitlist-field">
                     <span class="waitlist-label">Email</span>
-                    <input type="email" name="email" id="waitlist-email" required placeholder="you@example.com" autocomplete="email">
+                    <input type="email" name="email" id="signup-email" required placeholder="you@example.com" autocomplete="email">
                 </label>
-                <label class="waitlist-field">
-                    <span class="waitlist-label">Product interest</span>
-                    <select name="product" id="waitlist-product">
-                        <option value="terminal">VIC Terminal — $29/mo SaaS</option>
-                        <option value="kiosk">VIC Kiosk — Premium AI Agent</option>
-                        <option value="both">Both Terminal + Kiosk</option>
-                    </select>
-                </label>
+                <div class="signup-tz-note">
+                    🕐 Timezone detected: <span id="signup-tz">America/Phoenix</span> · <a href="#" id="signup-tz-change">change</a>
+                </div>
+                <input type="hidden" name="timezone" id="signup-tz-input" value="America/Phoenix">
                 <input type="hidden" name="source" value="getvic.oddsifylabs.com">
+                <input type="hidden" name="intent" id="signup-intent" value="free">
+
                 <button type="submit" class="btn btn-primary waitlist-submit">
-                    <span class="waitlist-submit-text">Notify Me at Launch</span>
+                    <span class="waitlist-submit-text">Send Sign-In Link</span>
                 </button>
             </form>
 
-            <div class="waitlist-success" id="waitlist-success" hidden>
-                <div class="waitlist-success-icon">✓</div>
-                <h4>You're on the list.</h4>
-                <p>We'll email you when VIC Terminal is live. Check <a href="https://x.com/FreeVICSignals">@FreeVICSignals</a> for signal updates in the meantime.</p>
+            <div class="waitlist-success" id="signup-success" hidden>
+                <div class="waitlist-success-icon">✉</div>
+                <h4>Check your email.</h4>
+                <p>We sent a sign-in link to <strong id="signup-success-email">your email</strong>. Click it to start your free account.</p>
+                <p style="font-size: 12px; color: var(--text-muted); margin-top: 16px;">Link expires in 30 minutes. Didn't arrive? Check spam, or <a href="#" id="signup-resend">resend</a>.</p>
             </div>
 
-            <p class="waitlist-fineprint">No spam. No list sells. Unsubscribe anytime.</p>
+            <p class="waitlist-fineprint">By signing up you agree to our <a href="#terms" style="color: var(--text-muted);">terms</a>. No spam, no list sells, unsubscribe anytime.</p>
         </div>
     </div>
 
@@ -1631,37 +1822,148 @@
             }).join('');
         })();
 
-        // === WAITLIST MODAL ===
-        (function initWaitlist() {
-            const modal = document.getElementById('waitlist-modal');
-            const form = document.getElementById('waitlist-form');
-            const success = document.getElementById('waitlist-success');
-            const productSelect = document.getElementById('waitlist-product');
-            const subtitle = document.getElementById('waitlist-subtitle');
+        // === AUTH + SIGNUP FLOW ===
+        const VIC_API = 'https://vic-production-4478.up.railway.app';
+        const AUTH_TOKEN_KEY = 'vic_session_token';
+
+        // Helpers
+        function getToken() {
+            return localStorage.getItem(AUTH_TOKEN_KEY);
+        }
+        function setToken(t) {
+            localStorage.setItem(AUTH_TOKEN_KEY, t);
+        }
+        function clearToken() {
+            localStorage.removeItem(AUTH_TOKEN_KEY);
+        }
+
+        async function fetchWithAuth(url, opts = {}) {
+            const headers = opts.headers || {};
+            const token = getToken();
+            if (token) headers['Authorization'] = `Bearer ${token}`;
+            if (opts.body && !headers['Content-Type']) headers['Content-Type'] = 'application/json';
+            return fetch(url, { ...opts, headers });
+        }
+
+        // Detect timezone
+        function detectTimezone() {
+            try {
+                return Intl.DateTimeFormat().resolvedOptions().timeZone || 'America/Phoenix';
+            } catch (e) {
+                return 'America/Phoenix';
+            }
+        }
+
+        // Render signed-in state in nav
+        function renderAuthPill(user) {
+            const pill = document.getElementById('auth-pill');
+            const tier = document.getElementById('auth-pill-tier');
+            const email = document.getElementById('auth-pill-email');
+            if (!pill) return;
+            if (user) {
+                pill.classList.add('show');
+                tier.textContent = user.tier;
+                email.textContent = user.email.split('@')[0];
+                // Color tier differently for pro/enterprise
+                if (user.tier === 'pro') tier.style.background = 'var(--accent-secondary)';
+                else if (user.tier === 'enterprise') tier.style.background = 'var(--accent-tertiary)';
+                else tier.style.background = 'var(--accent-primary)';
+            } else {
+                pill.classList.remove('show');
+            }
+        }
+
+        // Update free/pro/enterprise CTAs based on auth state
+        function updateProductCTAs(user) {
+            const freeBtn = document.querySelector('[data-start-free]');
+            const proBtn = document.querySelector('[data-start-pro]');
+            if (!freeBtn || !proBtn) return;
+            if (user) {
+                freeBtn.textContent = user.tier === 'free' ? 'Open Dashboard →' : 'Manage Account →';
+                freeBtn.onclick = () => window.location.href = 'https://vic-production-4478.up.railway.app/';
+                proBtn.textContent = user.tier === 'pro' ? 'Manage Pro →' : 'Upgrade to Pro →';
+            }
+        }
+
+        // Check if user is signed in (on page load)
+        (async function checkSession() {
+            const token = getToken();
+            if (!token) return;
+            try {
+                const r = await fetchWithAuth(`${VIC_API}/api/auth/me`);
+                if (r.ok) {
+                    const data = await r.json();
+                    renderAuthPill(data.user);
+                    updateProductCTAs(data.user);
+                    // Update pick card if signed in
+                    if (data.claimStatus) updateClaimPill(data.claimStatus);
+                } else {
+                    clearToken();
+                }
+            } catch (e) {
+                console.debug('Session check failed:', e.message);
+            }
+        })();
+
+        // Show "X picks remaining" on the Joshua pick card for signed-in users
+        function updateClaimPill(status) {
+            const card = document.querySelector('.joshua-pick-card');
+            if (!card || !status) return;
+            const existing = card.querySelector('.claim-pill');
+            if (existing) existing.remove();
+
+            const pill = document.createElement('div');
+            pill.className = 'claim-pill';
+            pill.style.cssText = 'display:inline-block;margin-top:8px;padding:4px 10px;background:rgba(0,212,170,0.1);border:1px solid var(--accent-primary);border-radius:12px;font-size:12px;font-weight:700;color:var(--accent-primary);';
+            pill.textContent = status.remaining === 'unlimited'
+                ? '✓ Unlimited picks (Pro)'
+                : `⚡ ${status.remaining} of ${status.limit} picks remaining today`;
+            card.querySelector('.pick-body').appendChild(pill);
+        }
+
+        // Sign out handler
+        document.getElementById('auth-pill-signout')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            clearToken();
+            renderAuthPill(null);
+            updateProductCTAs(null);
+            location.reload();
+        });
+
+        // === SIGNUP MODAL ===
+        (function initSignup() {
+            const modal = document.getElementById('signup-modal');
+            const form = document.getElementById('signup-form');
+            const success = document.getElementById('signup-success');
+            const subtitle = document.getElementById('signup-subtitle');
+            const tzDisplay = document.getElementById('signup-tz');
+            const tzInput = document.getElementById('signup-tz-input');
+            const intentInput = document.getElementById('signup-intent');
+            const tzChange = document.getElementById('signup-tz-change');
             if (!modal || !form) return;
 
-            const productCopy = {
-                terminal: { title: 'Join the VIC Terminal Waitlist', subtitle: 'Get notified when VIC Terminal launches — $29/mo SaaS, zero setup.' },
-                kiosk: { title: 'Join the VIC Kiosk Waitlist', subtitle: 'Get notified when VIC Kiosk pricing is announced — premium AI agent tier.' },
-                both: { title: 'Join Both Waitlists', subtitle: 'Get notified when VIC Terminal + VIC Kiosk launch.' }
+            const tz = detectTimezone();
+            tzDisplay.textContent = tz;
+            tzInput.value = tz;
+
+            const intentCopy = {
+                free: { title: 'Start VIC Free', subtitle: '3 Joshua picks per day. We email you a sign-in link.' },
+                pro:  { title: 'Start Your 7-Day Pro Trial', subtitle: 'Unlimited picks for 7 days. No card required.' }
             };
 
-            function openModal(product) {
-                const copy = productCopy[product] || productCopy.terminal;
-                document.getElementById('waitlist-title').textContent = copy.title;
+            function openModal(intent) {
+                const copy = intentCopy[intent] || intentCopy.free;
+                document.getElementById('signup-title').textContent = copy.title;
                 subtitle.textContent = copy.subtitle;
-                if (product && product !== 'both') {
-                    productSelect.value = product;
-                } else {
-                    productSelect.value = 'both';
-                }
+                intentInput.value = intent;
                 form.hidden = false;
                 success.hidden = true;
                 form.reset();
-                productSelect.value = product && product !== 'both' ? product : 'both';
+                tzInput.value = tz;
+                tzDisplay.textContent = tz;
                 modal.classList.add('open');
                 modal.setAttribute('aria-hidden', 'false');
-                setTimeout(() => document.getElementById('waitlist-email').focus(), 100);
+                setTimeout(() => document.getElementById('signup-email').focus(), 100);
             }
 
             function closeModal() {
@@ -1669,58 +1971,140 @@
                 modal.setAttribute('aria-hidden', 'true');
             }
 
-            document.querySelectorAll('[data-open-waitlist]').forEach(el => {
-                el.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openModal(el.getAttribute('data-open-waitlist'));
-                });
-            });
-
-            document.querySelectorAll('[data-close-modal]').forEach(el => {
-                el.addEventListener('click', closeModal);
-            });
-
+            document.querySelectorAll('[data-start-free]').forEach(el =>
+                el.addEventListener('click', (e) => { e.preventDefault(); openModal('free'); })
+            );
+            document.querySelectorAll('[data-start-pro]').forEach(el =>
+                el.addEventListener('click', (e) => { e.preventDefault(); openModal('pro'); })
+            );
+            document.querySelectorAll('[data-close-modal]').forEach(el =>
+                el.addEventListener('click', closeModal)
+            );
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
             });
 
+            // Timezone change link
+            tzChange?.addEventListener('click', (e) => {
+                e.preventDefault();
+                const newTz = prompt('Enter your IANA timezone (e.g., America/Phoenix, America/New_York, Europe/London):', tz);
+                if (newTz) {
+                    try {
+                        Intl.DateTimeFormat(undefined, { timeZone: newTz });
+                        tzInput.value = newTz;
+                        tzDisplay.textContent = newTz;
+                    } catch (e) {
+                        alert('Invalid timezone. Try: America/Phoenix, America/New_York, Europe/London');
+                    }
+                }
+            });
+
+            // Form submit
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const submitBtn = form.querySelector('.waitlist-submit');
                 const submitText = submitBtn.querySelector('.waitlist-submit-text');
-                const email = document.getElementById('waitlist-email').value.trim();
-                const product = productSelect.value;
-
-                if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-                    document.getElementById('waitlist-email').focus();
+                const email = document.getElementById('signup-email').value.trim();
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    document.getElementById('signup-email').focus();
                     return;
                 }
-
                 submitBtn.disabled = true;
-                submitText.textContent = 'Submitting...';
+                submitText.textContent = 'Sending...';
 
-                // Try to POST to a /api/waitlist endpoint. Falls back to localStorage so leads aren't lost.
-                const payload = { email, product, source: 'getvic.oddsifylabs.com', ts: new Date().toISOString() };
+                const payload = {
+                    email,
+                    timezone: tzInput.value,
+                    source: 'getvic.oddsifylabs.com'
+                };
+
                 try {
-                    const r = await fetch('https://vic-production-4478.up.railway.app/api/waitlist', {
+                    const r = await fetch(`${VIC_API}/api/auth/signup`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
-                    if (!r.ok) throw new Error('endpoint not ready');
-                } catch (err) {
-                    // Fallback: stash in localStorage so leads aren't lost if backend isn't wired yet
-                    try {
-                        const existing = JSON.parse(localStorage.getItem('vic_waitlist_fallback') || '[]');
-                        existing.push(payload);
-                        localStorage.setItem('vic_waitlist_fallback', JSON.stringify(existing));
-                        console.log('Waitlist lead saved to localStorage fallback:', payload);
-                    } catch (e) {}
-                }
+                    const data = await r.json();
 
-                form.hidden = true;
-                success.hidden = false;
+                    if (!r.ok) {
+                        submitText.textContent = 'Error — try again';
+                        submitBtn.disabled = false;
+                        return;
+                    }
+
+                    if (data.devMagicUrl) {
+                        // Dev mode: show the link inline so the user can complete signup
+                        document.getElementById('signup-success-email').innerHTML =
+                            `${email} <br><br><a href="${data.devMagicUrl}" class="btn btn-primary" style="margin-top: 12px; display: inline-block;">Click to complete sign-in (dev mode)</a>`;
+                        form.hidden = true;
+                        success.hidden = false;
+                        return;
+                    }
+
+                    // Prod mode: just show "check your email"
+                    document.getElementById('signup-success-email').textContent = email;
+                    form.hidden = true;
+                    success.hidden = false;
+                } catch (err) {
+                    submitText.textContent = 'Network error — try again';
+                    submitBtn.disabled = false;
+                }
             });
+        })();
+
+        // === TRACK RECORD SECTION === (re-attached)
+        (async function loadTrackRecord() {
+            const API = VIC_API;
+            const totalEl = document.getElementById('track-total');
+            const winrateEl = document.getElementById('track-winrate');
+            const pendingEl = document.getElementById('track-pending');
+            const streakEl = document.getElementById('track-streak');
+            const rowsEl = document.getElementById('track-rows');
+            if (!totalEl) return;
+
+            let signals = [];
+            let stats = null;
+            try {
+                const [sigRes, statsRes] = await Promise.all([
+                    fetch(`${API}/api/joshua/signals?limit=20`, { cache: 'no-store' }),
+                    fetch(`${API}/api/joshua/stats`, { cache: 'no-store' })
+                ]);
+                if (sigRes.ok) {
+                    const data = await sigRes.json();
+                    signals = Array.isArray(data) ? data : (data.signals || []);
+                }
+                if (statsRes.ok) stats = await statsRes.json();
+            } catch (e) { console.debug('Track record fetch failed:', e.message); }
+
+            if (stats) {
+                totalEl.textContent = stats.total_signals ?? signals.length ?? 0;
+                pendingEl.textContent = stats.pending ?? 0;
+                if (stats.settled > 0 && stats.win_rate && stats.win_rate !== 'N/A') {
+                    winrateEl.textContent = stats.win_rate;
+                } else winrateEl.textContent = '—';
+            } else totalEl.textContent = signals.length;
+
+            const settled = signals.filter(s => s.result === 'win' || s.result === 'loss' || s.result === 'push');
+            if (settled.length > 0) {
+                let streak = 0; let streakType = settled[0].result;
+                for (const s of settled) { if (s.result === streakType) streak++; else break; }
+                const streakLabel = streakType === 'win' ? `W${streak}` : streakType === 'loss' ? `L${streak}` : `P${streak}`;
+                streakEl.textContent = streakLabel;
+                streakEl.style.color = streakType === 'win' ? 'var(--accent-primary)' : streakType === 'loss' ? 'var(--accent-secondary)' : 'var(--text-muted)';
+            } else streakEl.textContent = '—';
+
+            if (signals.length === 0) return;
+            const recent = signals.slice().sort((a, b) => new Date(b.created_at || b.timestamp || 0) - new Date(a.created_at || a.timestamp || 0)).slice(0, 5);
+            rowsEl.innerHTML = recent.map(s => {
+                const date = new Date(s.created_at || s.timestamp || Date.now());
+                const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/Phoenix' });
+                const matchup = (s.teams || `${s.away || '?'} @ ${s.home || '?'}`).replace(/@/g, 'vs');
+                const signalType = (s.type || 'signal').replace(/_/g, ' ');
+                const pick = `${s.side || ''} ${s.odds || ''}`.trim() || s.market || '—';
+                const result = s.result || 'pending';
+                const resultLabel = result === 'win' ? 'WIN' : result === 'loss' ? 'LOSS' : result === 'push' ? 'PUSH' : 'PEND';
+                return `<div class="track-row"><div class="track-row-date">${dateStr}</div><div class="track-row-matchup">${matchup}</div><div class="track-row-signal">${signalType}</div><div class="track-row-pick">${pick}</div><div class="track-row-result ${result}">${resultLabel}</div></div>`;
+            }).join('');
         })();
     </script>
 </body>
