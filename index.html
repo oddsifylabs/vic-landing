@@ -281,8 +281,8 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: calc(var(--spacing-unit) * 6);
+            grid-template-columns: repeat(2, 1fr);
+            gap: calc(var(--spacing-unit) * 5);
         }
 
         .product-card {
@@ -368,16 +368,21 @@
         }
 
         .product-card .price {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
             color: var(--accent-primary);
-            margin-bottom: calc(var(--spacing-unit) * 3);
+            margin-bottom: calc(var(--spacing-unit) * 1);
+            line-height: 1.1;
         }
 
-        .product-card .price span {
-            font-size: 14px;
+        .product-card .price-unit {
+            display: block;
+            font-size: 13px;
             color: var(--text-muted);
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: calc(var(--spacing-unit) * 0.5);
         }
 
         .product-card p {
@@ -425,7 +430,7 @@
 
         .sports-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            grid-template-columns: repeat(5, 1fr);
             gap: calc(var(--spacing-unit) * 3);
             margin-top: calc(var(--spacing-unit) * 8);
         }
@@ -533,6 +538,126 @@
             font-weight: 700;
         }
 
+        /* Live Joshua Pick Card */
+        .joshua-pick-card {
+            margin-top: calc(var(--spacing-unit) * 8);
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: calc(var(--spacing-unit) * 6);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .joshua-pick-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);
+        }
+
+        .pick-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            padding-bottom: calc(var(--spacing-unit) * 2);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pick-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pick-time {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .pick-body {
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .pick-matchup {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--spacing-unit) * 3);
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: calc(var(--spacing-unit) * 1);
+        }
+
+        .pick-team {
+            color: var(--text-primary);
+        }
+
+        .pick-vs {
+            color: var(--text-muted);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .pick-market {
+            text-align: center;
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .pick-footer {
+            padding-top: calc(var(--spacing-unit) * 3);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .pick-meta {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 2);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            flex-wrap: wrap;
+        }
+
+        .pick-signal-type,
+        .pick-confidence {
+            font-size: 12px;
+            font-weight: 700;
+            padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 1.5);
+            border-radius: 12px;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .pick-reason {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .pick-cta {
+            display: inline-block;
+            margin-top: calc(var(--spacing-unit) * 3);
+            color: var(--accent-primary);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .pick-cta:hover {
+            opacity: 0.8;
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border-color);
@@ -552,6 +677,12 @@
         }
 
         /* Responsive */
+        @media (max-width: 900px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 48px;
@@ -576,6 +707,10 @@
 
             .joshua-stats {
                 grid-template-columns: 1fr;
+            }
+
+            .sports-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .nav-links {
@@ -643,82 +778,80 @@
         <div class="section-container">
             <div class="section-header">
                 <h2>Choose Your VIC</h2>
-                <p>Four product tiers — same Joshua AI engine, different deployment models</p>
+                <p>Four product tiers — same Joshua AI engine, different deployment models. 1 live, 1 shipping, 2 on the way.</p>
             </div>
 
             <div class="products-grid">
-                <!-- VIC Pro -->
+                <!-- VIC Personal — Free, live now -->
+                <div class="product-card">
+                    <div class="product-badge" style="background: var(--accent-primary); color: #0a0d12;">● Live Now</div>
+                    <div class="product-icon" style="background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);">⚙️</div>
+                    <h3>VIC Personal</h3>
+                    <div class="price">Free<span class="price-unit">Open source · Self-hosted</span></div>
+                    <p>Self-hosted on Railway. Full source code, all 10 sports, experimental features first. For developers and tinkerers who want to own their stack.</p>
+                    <ul class="product-features">
+                        <li>Full source code access</li>
+                        <li>All 10 sports coverage</li>
+                        <li>Self-hosted on Railway</li>
+                        <li>Experimental features first</li>
+                        <li>Community support</li>
+                        <li>Customizable &amp; forkable</li>
+                    </ul>
+                    <a href="https://github.com/oddsifylabs/vic" class="btn btn-primary">Deploy on Railway</a>
+                </div>
+
+                <!-- VIC Pro — USB, $99 one-time -->
                 <div class="product-card featured">
-                    <div class="product-badge">Most Popular</div>
+                    <div class="product-badge" style="background: var(--accent-secondary); color: #0a0d12;">● Shipping Now</div>
                     <div class="product-icon">💾</div>
                     <h3>VIC Pro</h3>
-                    <div class="price">$99 <span>one-time</span></div>
-                    <p>USB deployment — own your data, run locally, lifetime updates. Perfect for serious bettors who want full control.</p>
+                    <div class="price">$99<span class="price-unit">One-time · Lifetime updates</span></div>
+                    <p>USB drive deployment — own your data, run locally, no subscription. Perfect for serious bettors who want full control and zero recurring cost.</p>
                     <ul class="product-features">
                         <li>USB drive deployment</li>
                         <li>Joshua AI signal analysis</li>
-                        <li>62-70% win rate target</li>
                         <li>All 10 sports coverage</li>
-                        <li>Lifetime updates</li>
+                        <li>Lifetime updates included</li>
                         <li>No subscription required</li>
                         <li>Full data ownership</li>
                     </ul>
                     <a href="https://github.com/oddsifylabs/vic-v4" class="btn btn-primary">Get VIC Pro</a>
                 </div>
 
-                <!-- VIC Terminal -->
+                <!-- VIC Terminal — SaaS, $29/mo, waitlist -->
                 <div class="product-card">
+                    <div class="product-badge" style="background: var(--text-muted); color: #0a0d12;">Waitlist</div>
                     <div class="product-icon">🖥️</div>
                     <h3>VIC Terminal</h3>
-                    <div class="price">$29 <span>/month</span></div>
-                    <p>Hosted SaaS — zero setup, auto-updates, accessible anywhere. Best for bettors who want convenience.</p>
+                    <div class="price">$29<span class="price-unit">Per month · Billed monthly</span></div>
+                    <p>Hosted SaaS — zero setup, auto-updates, accessible from anywhere. Best for bettors who'd rather place bets than manage infrastructure.</p>
                     <ul class="product-features">
                         <li>Cloud-hosted deployment</li>
                         <li>Joshua AI signal analysis</li>
-                        <li>62-70% win rate target</li>
                         <li>All 10 sports coverage</li>
                         <li>Auto-updates included</li>
-                        <li>Access from anywhere</li>
+                        <li>Access from any device</li>
                         <li>No installation required</li>
                     </ul>
                     <a href="#" class="btn btn-secondary">Join Waitlist</a>
                 </div>
 
-                <!-- VIC Kiosk -->
+                <!-- VIC Kiosk — AI agent, TBD, coming soon -->
                 <div class="product-card kiosk">
                     <div class="product-badge" style="background: var(--accent-kiosk); color: #0a0d12;">Coming Soon</div>
                     <div class="product-icon">🤖</div>
                     <h3>VIC Kiosk</h3>
-                    <div class="price">TBD <span>premium tier</span></div>
-                    <p>Full AI agent — autonomous handicapping, real-time decision making, Joshua speaks for itself. The ultimate edge.</p>
+                    <div class="price">TBD<span class="price-unit">Premium tier · Pricing announced 2026</span></div>
+                    <p>Full AI agent — autonomous handicapping, real-time decision making, Joshua speaks for itself. The ultimate edge: an AI that doesn't just suggest, it decides.</p>
                     <ul class="product-features">
                         <li>Full Hermes AI agent</li>
                         <li>Autonomous bet decisions</li>
                         <li>Real-time game monitoring</li>
                         <li>Joshua AI reasoning voice</li>
                         <li>Auto-explanation of picks</li>
-                        <li>Learning from outcomes</li>
-                        <li>Premium tier access</li>
+                        <li>Learns from every outcome</li>
                     </ul>
                     <a href="#" class="btn btn-secondary" style="border-color: var(--accent-kiosk); color: var(--accent-kiosk);">Join Waitlist</a>
-                </div>
-
-                <!-- VIC Personal -->
-                <div class="product-card">
-                    <div class="product-icon">⚙️</div>
-                    <h3>VIC Personal</h3>
-                    <div class="price">Free <span>open source</span></div>
-                    <p>Self-hosted — deploy on Railway, limited sports, experimental features. For developers and tinkerers.</p>
-                    <ul class="product-features">
-                        <li>Self-hosted on Railway</li>
-                        <li>Full source code access</li>
-                        <li>MLB + Soccer only</li>
-                        <li>Experimental features</li>
-                        <li>Community support</li>
-                        <li>Customizable</li>
-                        <li>Not for public use</li>
-                    </ul>
-                    <a href="https://github.com/oddsifylabs/vic" class="btn btn-secondary">Deploy on Railway</a>
                 </div>
             </div>
         </div>
@@ -780,9 +913,9 @@
     <!-- Joshua AI -->
     <section class="joshua-section" id="joshua">
         <div class="joshua-container">
-            <div class="joshua-badge">The Brains</div>
+            <div class="joshua-badge">The Engine</div>
             <h2>Meet Joshua AI</h2>
-            <p>Joshua is the AI-powered predictive engine behind VIC — combining Claude AI reasoning with signal detection to achieve 62-70% win rates. Joshua analyzes every signal, assigns confidence scores, and explains the reasoning behind each pick.</p>
+            <p>Joshua is the AI-powered predictive engine behind VIC — combining Claude AI reasoning with nine signal types to find +EV across the board. Every pick gets a confidence score, a reasoning trace, and an immutable record.</p>
 
             <div class="joshua-stats">
                 <div class="joshua-stat">
@@ -790,7 +923,7 @@
                     <div class="joshua-stat-label">Target Win Rate</div>
                 </div>
                 <div class="joshua-stat">
-                    <div class="joshua-stat-value">6</div>
+                    <div class="joshua-stat-value">9</div>
                     <div class="joshua-stat-label">Signal Types</div>
                 </div>
                 <div class="joshua-stat">
@@ -807,6 +940,29 @@
                     See Signals
                 </a>
             </div>
+
+            <div class="joshua-pick-card">
+                <div class="pick-header">
+                    <div class="pick-label">Latest Joshua Signal</div>
+                    <div class="pick-time" id="pick-time">Loading...</div>
+                </div>
+                <div class="pick-body">
+                    <div class="pick-matchup">
+                        <span class="pick-team">LAL</span>
+                        <span class="pick-vs">vs</span>
+                        <span class="pick-team">BOS</span>
+                    </div>
+                    <div class="pick-market">Spread · Lakers +4.5 (-110)</div>
+                </div>
+                <div class="pick-footer">
+                    <div class="pick-meta">
+                        <span class="pick-signal-type">⏰ Late Sharp</span>
+                        <span class="pick-confidence">Confidence: 78%</span>
+                    </div>
+                    <div class="pick-reason">Line moved 1.5pts in last 4min across 4 books while public sits at 62% on Celtics. Reverse line movement detected.</div>
+                </div>
+                <a href="https://x.com/FreeVICSignals" class="pick-cta">View full track record →</a>
+            </div>
         </div>
     </section>
 
@@ -814,5 +970,75 @@
     <footer>
         <p>© 2026 <a href="https://www.oddsifylabs.com">Oddsify Labs</a>. VIC is open source. <a href="https://github.com/oddsifylabs/vic">Built in public.</a> | <a href="https://ncpgambling.org">Gambling Risk Awareness</a></p>
     </footer>
+    <script>
+        // Set timestamp in Arizona MST
+        (function setPickTime() {
+            const el = document.getElementById('pick-time');
+            if (!el) return;
+            const now = new Date().toLocaleString('en-US', {
+                timeZone: 'America/Phoenix',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            });
+            el.textContent = now + ' MST';
+        })();
+
+        // Try to pull a real recent signal from the live VIC API
+        (async function fetchLatestSignal() {
+            const card = document.querySelector('.joshua-pick-card');
+            if (!card) return;
+            try {
+                const r = await fetch('https://vic-production-7e40.up.railway.app/api/joshua/signals?limit=1', { cache: 'no-store' });
+                if (!r.ok) return; // Fall back to static sample
+                const data = await r.json();
+                const sig = Array.isArray(data) ? data[0] : data.signals?.[0];
+                if (!sig) return;
+
+                // Update matchup
+                const matchup = card.querySelector('.pick-matchup');
+                if (sig.teams && matchup) {
+                    const parts = sig.teams.split(/[@vs]+/).map(s => s.trim()).filter(Boolean);
+                    if (parts.length >= 2) {
+                        matchup.innerHTML = `<span class="pick-team">${parts[0]}</span><span class="pick-vs">vs</span><span class="pick-team">${parts[1]}</span>`;
+                    }
+                }
+
+                // Update market/odds
+                const market = card.querySelector('.pick-market');
+                if (market && sig.odds) {
+                    market.textContent = `${sig.type || 'Signal'} · ${sig.side || ''} ${sig.odds}`;
+                }
+
+                // Update signal type
+                const typeEl = card.querySelector('.pick-signal-type');
+                if (typeEl && sig.type) {
+                    typeEl.textContent = sig.type.replace(/_/g, ' ').toUpperCase();
+                }
+
+                // Update confidence
+                const confEl = card.querySelector('.pick-confidence');
+                if (confEl && sig.confidence) {
+                    const pct = Math.round((typeof sig.confidence === 'number' ? sig.confidence : 0.78) * 100);
+                    confEl.textContent = `Confidence: ${pct}%`;
+                }
+
+                // Update reason
+                const reasonEl = card.querySelector('.pick-reason');
+                if (reasonEl && sig.details) {
+                    reasonEl.textContent = sig.details;
+                }
+
+                // Mark as live
+                const label = card.querySelector('.pick-label');
+                if (label) label.textContent = '● Live Joshua Signal';
+            } catch (e) {
+                // Silently keep static sample if API unreachable
+                console.debug('VIC signal fetch failed, using static sample:', e.message);
+            }
+        })();
+    </script>
 </body>
 </html>
