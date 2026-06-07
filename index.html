@@ -658,6 +658,402 @@
             opacity: 0.8;
         }
 
+        /* Track Record Section */
+        .track-section {
+            padding: calc(var(--spacing-unit) * 16) calc(var(--spacing-unit) * 4);
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .track-disclaimer {
+            display: inline-block;
+            margin-left: calc(var(--spacing-unit) * 1.5);
+            padding: 2px 8px;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-primary);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .track-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: calc(var(--spacing-unit) * 3);
+            margin-bottom: calc(var(--spacing-unit) * 8);
+        }
+
+        .track-stat {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: calc(var(--spacing-unit) * 5);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .track-stat:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .track-stat.highlight {
+            border-color: var(--accent-primary);
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.05) 0%, rgba(67, 97, 238, 0.05) 100%);
+        }
+
+        .track-stat-value {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+        }
+
+        .track-stat.highlight .track-stat-value {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .track-stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 700;
+        }
+
+        .track-target {
+            display: block;
+            margin-top: 4px;
+            font-size: 10px;
+            color: var(--accent-primary);
+            font-weight: 600;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .track-table-wrap {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .track-table-header {
+            display: grid;
+            grid-template-columns: 100px 1.5fr 1fr 1.2fr 80px;
+            gap: calc(var(--spacing-unit) * 3);
+            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
+            background: var(--bg-tertiary);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .track-row {
+            display: grid;
+            grid-template-columns: 100px 1.5fr 1fr 1.2fr 80px;
+            gap: calc(var(--spacing-unit) * 3);
+            padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
+            border-bottom: 1px solid var(--border-color);
+            align-items: center;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .track-row:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .track-row:last-child {
+            border-bottom: none;
+        }
+
+        .track-row-date {
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .track-row-matchup {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .track-row-signal {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .track-row-pick {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .track-row-result {
+            font-weight: 800;
+            text-align: center;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .track-row-result.win {
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--accent-primary);
+        }
+
+        .track-row-result.loss {
+            background: rgba(255, 107, 53, 0.15);
+            color: var(--accent-secondary);
+        }
+
+        .track-row-result.push {
+            background: rgba(122, 130, 144, 0.15);
+            color: var(--text-muted);
+        }
+
+        .track-row-result.pending {
+            background: rgba(67, 97, 238, 0.15);
+            color: var(--accent-tertiary);
+        }
+
+        .track-empty {
+            padding: calc(var(--spacing-unit) * 10) calc(var(--spacing-unit) * 4);
+            text-align: center;
+        }
+
+        .track-empty-icon {
+            font-size: 48px;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            opacity: 0.5;
+        }
+
+        .track-empty-text {
+            color: var(--text-secondary);
+            font-size: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .track-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: calc(var(--spacing-unit) * 5);
+            padding: calc(var(--spacing-unit) * 3) 0;
+            font-size: 13px;
+        }
+
+        .track-immutable {
+            color: var(--text-muted);
+        }
+
+        .track-api-link {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .track-api-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Waitlist Modal */
+        .waitlist-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: calc(var(--spacing-unit) * 4);
+        }
+
+        .waitlist-modal.open {
+            display: flex;
+        }
+
+        .waitlist-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+        }
+
+        .waitlist-card {
+            position: relative;
+            max-width: 480px;
+            width: 100%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: calc(var(--spacing-unit) * 8);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            animation: modalSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .waitlist-close {
+            position: absolute;
+            top: calc(var(--spacing-unit) * 2);
+            right: calc(var(--spacing-unit) * 3);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 32px;
+            font-weight: 300;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .waitlist-close:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .waitlist-icon {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .waitlist-card h3 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: calc(var(--spacing-unit) * 1);
+        }
+
+        .waitlist-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: calc(var(--spacing-unit) * 6);
+        }
+
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing-unit) * 3);
+        }
+
+        .waitlist-field {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing-unit) * 1);
+        }
+
+        .waitlist-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .waitlist-field input,
+        .waitlist-field select {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 3);
+            color: var(--text-primary);
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .waitlist-field input:focus,
+        .waitlist-field select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .waitlist-field input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .waitlist-submit {
+            margin-top: calc(var(--spacing-unit) * 2);
+        }
+
+        .waitlist-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .waitlist-success {
+            text-align: center;
+        }
+
+        .waitlist-success-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);
+            color: #0a0d12;
+            font-size: 32px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto calc(var(--spacing-unit) * 3);
+        }
+
+        .waitlist-success h4 {
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .waitlist-success p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .waitlist-success a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .waitlist-fineprint {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 11px;
+            margin-top: calc(var(--spacing-unit) * 4);
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border-color);
@@ -713,6 +1109,27 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .track-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .track-table-header,
+            .track-row {
+                grid-template-columns: 80px 1fr 1fr 70px;
+                font-size: 12px;
+            }
+
+            .track-table-header > div:nth-child(3),
+            .track-row > div:nth-child(3) {
+                display: none;
+            }
+
+            .track-footer {
+                flex-direction: column;
+                gap: calc(var(--spacing-unit) * 2);
+                align-items: flex-start;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -733,6 +1150,7 @@
             <a href="#products">Products</a>
             <a href="#sports">Sports</a>
             <a href="#joshua">Joshua AI</a>
+            <a href="#track">Track Record</a>
             <a href="https://github.com/oddsifylabs/vic">GitHub</a>
             <a href="https://x.com/FreeVICSignals">Signals</a>
         </div>
@@ -833,7 +1251,7 @@
                         <li>Access from any device</li>
                         <li>No installation required</li>
                     </ul>
-                    <a href="#" class="btn btn-secondary">Join Waitlist</a>
+                    <a href="#" class="btn btn-secondary" data-open-waitlist="terminal">Join Waitlist</a>
                 </div>
 
                 <!-- VIC Kiosk — AI agent, TBD, coming soon -->
@@ -851,7 +1269,7 @@
                         <li>Auto-explanation of picks</li>
                         <li>Learns from every outcome</li>
                     </ul>
-                    <a href="#" class="btn btn-secondary" style="border-color: var(--accent-kiosk); color: var(--accent-kiosk);">Join Waitlist</a>
+                    <a href="#" class="btn btn-secondary" data-open-waitlist="kiosk" style="border-color: var(--accent-kiosk); color: var(--accent-kiosk);">Join Waitlist</a>
                 </div>
             </div>
         </div>
@@ -966,6 +1384,95 @@
         </div>
     </section>
 
+    <!-- Track Record Section -->
+    <section class="track-section" id="track">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Joshua's Live Track Record</h2>
+                <p>Real signals, real outcomes. Every pick is logged, settled from ESPN scores, and public. <span class="track-disclaimer">Building baseline — first 30 days of data.</span></p>
+            </div>
+
+            <div class="track-stats" id="track-stats">
+                <div class="track-stat">
+                    <div class="track-stat-value" id="track-total">—</div>
+                    <div class="track-stat-label">Total Signals</div>
+                </div>
+                <div class="track-stat highlight">
+                    <div class="track-stat-value" id="track-winrate">—</div>
+                    <div class="track-stat-label">Win Rate <span class="track-target">Target 62-70%</span></div>
+                </div>
+                <div class="track-stat">
+                    <div class="track-stat-value" id="track-pending">—</div>
+                    <div class="track-stat-label">Pending</div>
+                </div>
+                <div class="track-stat">
+                    <div class="track-stat-value" id="track-streak">—</div>
+                    <div class="track-stat-label">Current Streak</div>
+                </div>
+            </div>
+
+            <div class="track-table-wrap">
+                <div class="track-table-header">
+                    <div>Date</div>
+                    <div>Matchup</div>
+                    <div>Signal</div>
+                    <div>Pick</div>
+                    <div>Result</div>
+                </div>
+                <div id="track-rows">
+                    <div class="track-empty">
+                        <div class="track-empty-icon">📊</div>
+                        <div class="track-empty-text">Baseline is still building. First signals logged June 2026 — check back in 2-3 weeks for settled picks.</div>
+                        <a href="https://x.com/FreeVICSignals" class="btn btn-secondary" style="margin-top: calc(var(--spacing-unit) * 3);">Watch signals live on X</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="track-footer">
+                <span class="track-immutable">🔒 Immutable record — every signal is timestamped and never deleted.</span>
+                <a href="https://vic-production-4478.up.railway.app/api/joshua/signals" class="track-api-link" target="_blank" rel="noopener">View full JSON feed →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Modal -->
+    <div class="waitlist-modal" id="waitlist-modal" aria-hidden="true">
+        <div class="waitlist-backdrop" data-close-modal></div>
+        <div class="waitlist-card" role="dialog" aria-modal="true" aria-labelledby="waitlist-title">
+            <button class="waitlist-close" data-close-modal aria-label="Close">×</button>
+            <div class="waitlist-icon">📬</div>
+            <h3 id="waitlist-title">Join the Waitlist</h3>
+            <p class="waitlist-subtitle" id="waitlist-subtitle">Get notified when VIC Terminal launches.</p>
+
+            <form class="waitlist-form" id="waitlist-form" novalidate>
+                <label class="waitlist-field">
+                    <span class="waitlist-label">Email</span>
+                    <input type="email" name="email" id="waitlist-email" required placeholder="you@example.com" autocomplete="email">
+                </label>
+                <label class="waitlist-field">
+                    <span class="waitlist-label">Product interest</span>
+                    <select name="product" id="waitlist-product">
+                        <option value="terminal">VIC Terminal — $29/mo SaaS</option>
+                        <option value="kiosk">VIC Kiosk — Premium AI Agent</option>
+                        <option value="both">Both Terminal + Kiosk</option>
+                    </select>
+                </label>
+                <input type="hidden" name="source" value="getvic.oddsifylabs.com">
+                <button type="submit" class="btn btn-primary waitlist-submit">
+                    <span class="waitlist-submit-text">Notify Me at Launch</span>
+                </button>
+            </form>
+
+            <div class="waitlist-success" id="waitlist-success" hidden>
+                <div class="waitlist-success-icon">✓</div>
+                <h4>You're on the list.</h4>
+                <p>We'll email you when VIC Terminal is live. Check <a href="https://x.com/FreeVICSignals">@FreeVICSignals</a> for signal updates in the meantime.</p>
+            </div>
+
+            <p class="waitlist-fineprint">No spam. No list sells. Unsubscribe anytime.</p>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>© 2026 <a href="https://www.oddsifylabs.com">Oddsify Labs</a>. VIC is open source. <a href="https://github.com/oddsifylabs/vic">Built in public.</a> | <a href="https://ncpgambling.org">Gambling Risk Awareness</a></p>
@@ -991,13 +1498,12 @@
             const card = document.querySelector('.joshua-pick-card');
             if (!card) return;
             try {
-                const r = await fetch('https://vic-production-7e40.up.railway.app/api/joshua/signals?limit=1', { cache: 'no-store' });
-                if (!r.ok) return; // Fall back to static sample
+                const r = await fetch('https://vic-production-4478.up.railway.app/api/joshua/signals?limit=1', { cache: 'no-store' });
+                if (!r.ok) return;
                 const data = await r.json();
                 const sig = Array.isArray(data) ? data[0] : data.signals?.[0];
                 if (!sig) return;
 
-                // Update matchup
                 const matchup = card.querySelector('.pick-matchup');
                 if (sig.teams && matchup) {
                     const parts = sig.teams.split(/[@vs]+/).map(s => s.trim()).filter(Boolean);
@@ -1006,38 +1512,215 @@
                     }
                 }
 
-                // Update market/odds
                 const market = card.querySelector('.pick-market');
                 if (market && sig.odds) {
-                    market.textContent = `${sig.type || 'Signal'} · ${sig.side || ''} ${sig.odds}`;
+                    market.textContent = `${(sig.type || 'signal').replace(/_/g, ' ')} · ${sig.side || ''} ${sig.odds}`;
                 }
 
-                // Update signal type
                 const typeEl = card.querySelector('.pick-signal-type');
                 if (typeEl && sig.type) {
                     typeEl.textContent = sig.type.replace(/_/g, ' ').toUpperCase();
                 }
 
-                // Update confidence
                 const confEl = card.querySelector('.pick-confidence');
-                if (confEl && sig.confidence) {
-                    const pct = Math.round((typeof sig.confidence === 'number' ? sig.confidence : 0.78) * 100);
+                if (confEl && sig.confidence != null) {
+                    const pct = typeof sig.confidence === 'number'
+                        ? (sig.confidence <= 1 ? Math.round(sig.confidence * 100) : Math.round(sig.confidence))
+                        : 78;
                     confEl.textContent = `Confidence: ${pct}%`;
                 }
 
-                // Update reason
                 const reasonEl = card.querySelector('.pick-reason');
                 if (reasonEl && sig.details) {
                     reasonEl.textContent = sig.details;
                 }
 
-                // Mark as live
                 const label = card.querySelector('.pick-label');
                 if (label) label.textContent = '● Live Joshua Signal';
             } catch (e) {
-                // Silently keep static sample if API unreachable
                 console.debug('VIC signal fetch failed, using static sample:', e.message);
             }
+        })();
+
+        // === TRACK RECORD SECTION ===
+        (async function loadTrackRecord() {
+            const API = 'https://vic-production-4478.up.railway.app';
+            const totalEl = document.getElementById('track-total');
+            const winrateEl = document.getElementById('track-winrate');
+            const pendingEl = document.getElementById('track-pending');
+            const streakEl = document.getElementById('track-streak');
+            const rowsEl = document.getElementById('track-rows');
+            if (!totalEl) return;
+
+            let signals = [];
+            let stats = null;
+            try {
+                const [sigRes, statsRes] = await Promise.all([
+                    fetch(`${API}/api/joshua/signals?limit=20`, { cache: 'no-store' }),
+                    fetch(`${API}/api/joshua/stats`, { cache: 'no-store' })
+                ]);
+                if (sigRes.ok) {
+                    const data = await sigRes.json();
+                    signals = Array.isArray(data) ? data : (data.signals || []);
+                }
+                if (statsRes.ok) {
+                    stats = await statsRes.json();
+                }
+            } catch (e) {
+                console.debug('Track record fetch failed:', e.message);
+            }
+
+            // Update stats tiles
+            if (stats) {
+                totalEl.textContent = stats.total_signals ?? signals.length ?? 0;
+                pendingEl.textContent = stats.pending ?? 0;
+                if (stats.settled > 0 && stats.win_rate && stats.win_rate !== 'N/A') {
+                    winrateEl.textContent = stats.win_rate;
+                } else {
+                    winrateEl.textContent = '—';
+                }
+            } else {
+                totalEl.textContent = signals.length;
+            }
+
+            // Compute streak
+            const settled = signals.filter(s => s.result === 'win' || s.result === 'loss' || s.result === 'push');
+            if (settled.length > 0) {
+                let streak = 0;
+                let streakType = settled[0].result;
+                for (const s of settled) {
+                    if (s.result === streakType) streak++;
+                    else break;
+                }
+                const streakLabel = streakType === 'win' ? `W${streak}` : streakType === 'loss' ? `L${streak}` : `P${streak}`;
+                streakEl.textContent = streakLabel;
+                streakEl.style.color = streakType === 'win' ? 'var(--accent-primary)' : streakType === 'loss' ? 'var(--accent-secondary)' : 'var(--text-muted)';
+            } else {
+                streakEl.textContent = '—';
+            }
+
+            // Build rows
+            if (signals.length === 0) {
+                // Keep the empty state from HTML — nothing to render
+                return;
+            }
+
+            // Sort newest first, take top 5
+            const recent = signals
+                .slice()
+                .sort((a, b) => new Date(b.created_at || b.timestamp || 0) - new Date(a.created_at || a.timestamp || 0))
+                .slice(0, 5);
+
+            rowsEl.innerHTML = recent.map(s => {
+                const date = new Date(s.created_at || s.timestamp || Date.now());
+                const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/Phoenix' });
+                const matchup = (s.teams || `${s.away || '?'} @ ${s.home || '?'}`).replace(/@/g, 'vs');
+                const signalType = (s.type || 'signal').replace(/_/g, ' ');
+                const pick = `${s.side || ''} ${s.odds || ''}`.trim() || s.market || '—';
+                const result = s.result || 'pending';
+                const resultLabel = result === 'win' ? 'WIN' : result === 'loss' ? 'LOSS' : result === 'push' ? 'PUSH' : 'PEND';
+                return `
+                    <div class="track-row">
+                        <div class="track-row-date">${dateStr}</div>
+                        <div class="track-row-matchup">${matchup}</div>
+                        <div class="track-row-signal">${signalType}</div>
+                        <div class="track-row-pick">${pick}</div>
+                        <div class="track-row-result ${result}">${resultLabel}</div>
+                    </div>
+                `;
+            }).join('');
+        })();
+
+        // === WAITLIST MODAL ===
+        (function initWaitlist() {
+            const modal = document.getElementById('waitlist-modal');
+            const form = document.getElementById('waitlist-form');
+            const success = document.getElementById('waitlist-success');
+            const productSelect = document.getElementById('waitlist-product');
+            const subtitle = document.getElementById('waitlist-subtitle');
+            if (!modal || !form) return;
+
+            const productCopy = {
+                terminal: { title: 'Join the VIC Terminal Waitlist', subtitle: 'Get notified when VIC Terminal launches — $29/mo SaaS, zero setup.' },
+                kiosk: { title: 'Join the VIC Kiosk Waitlist', subtitle: 'Get notified when VIC Kiosk pricing is announced — premium AI agent tier.' },
+                both: { title: 'Join Both Waitlists', subtitle: 'Get notified when VIC Terminal + VIC Kiosk launch.' }
+            };
+
+            function openModal(product) {
+                const copy = productCopy[product] || productCopy.terminal;
+                document.getElementById('waitlist-title').textContent = copy.title;
+                subtitle.textContent = copy.subtitle;
+                if (product && product !== 'both') {
+                    productSelect.value = product;
+                } else {
+                    productSelect.value = 'both';
+                }
+                form.hidden = false;
+                success.hidden = true;
+                form.reset();
+                productSelect.value = product && product !== 'both' ? product : 'both';
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                setTimeout(() => document.getElementById('waitlist-email').focus(), 100);
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+
+            document.querySelectorAll('[data-open-waitlist]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal(el.getAttribute('data-open-waitlist'));
+                });
+            });
+
+            document.querySelectorAll('[data-close-modal]').forEach(el => {
+                el.addEventListener('click', closeModal);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const submitBtn = form.querySelector('.waitlist-submit');
+                const submitText = submitBtn.querySelector('.waitlist-submit-text');
+                const email = document.getElementById('waitlist-email').value.trim();
+                const product = productSelect.value;
+
+                if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    document.getElementById('waitlist-email').focus();
+                    return;
+                }
+
+                submitBtn.disabled = true;
+                submitText.textContent = 'Submitting...';
+
+                // Try to POST to a /api/waitlist endpoint. Falls back to localStorage so leads aren't lost.
+                const payload = { email, product, source: 'getvic.oddsifylabs.com', ts: new Date().toISOString() };
+                try {
+                    const r = await fetch('https://vic-production-4478.up.railway.app/api/waitlist', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!r.ok) throw new Error('endpoint not ready');
+                } catch (err) {
+                    // Fallback: stash in localStorage so leads aren't lost if backend isn't wired yet
+                    try {
+                        const existing = JSON.parse(localStorage.getItem('vic_waitlist_fallback') || '[]');
+                        existing.push(payload);
+                        localStorage.setItem('vic_waitlist_fallback', JSON.stringify(existing));
+                        console.log('Waitlist lead saved to localStorage fallback:', payload);
+                    } catch (e) {}
+                }
+
+                form.hidden = true;
+                success.hidden = false;
+            });
         })();
     </script>
 </body>
