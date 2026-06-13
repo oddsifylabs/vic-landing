@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VIC - Vegas Intelligence Console. AI-powered sports betting signals across 10 sports. Free, Pro, and Enterprise tiers. Launching July 6, 2026.">
+    <meta name="description" content="VIC - Vegas Intelligence Console. AI-powered sports betting signals across 9 sports (8 leagues + FIFA World Cup). Free, Pro, and Enterprise tiers. Launching July 6, 2026.">
     <meta name="og:title" content="VIC - Vegas Intelligence Console">
-    <meta name="og:description" content="AI-powered sports betting intelligence. 62-70% win rate target. 10 sports. 3 product tiers. Launching 7/6/26.">
+    <meta name="og:description" content="AI-powered sports betting intelligence. 62-70% win rate target. 9 sports (8 leagues + FIFA World Cup). 3 product tiers. Launching 7/6/26.">
     <title>VIC - Vegas Intelligence Console | Oddsify Labs</title>
     <style>
         * {
@@ -246,6 +246,16 @@
             letter-spacing: 0.8px;
             font-weight: 700;
         }
+        .stat-sublabel {
+            display: block;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+            text-transform: none;
+            color: var(--text-muted);
+            opacity: 0.7;
+            margin-top: 2px;
+        }
 
         /* Products Section */
         .products-section {
@@ -461,6 +471,25 @@
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+
+        .sport-note {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: calc(var(--spacing-unit) * 1.5);
+            letter-spacing: 0.3px;
+            opacity: 0.75;
+            line-height: 1.3;
+        }
+
+        .sport-tournament {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.08) 0%, rgba(0, 212, 170, 0.05) 100%);
+            border-color: rgba(67, 97, 238, 0.3);
+        }
+
+        .sport-tournament:hover {
+            border-color: var(--accent-secondary);
+            box-shadow: 0 8px 16px rgba(67, 97, 238, 0.15);
         }
 
         /* Joshua Section */
@@ -1333,7 +1362,7 @@
     <section class="hero">
         <div class="hero-badge">LAUNCHING JULY 6, 2026 · JOIN THE WAITLIST</div>
         <h1>Beat the Market with<br><span class="grad">Joshua AI</span></h1>
-        <p>VIC is the Vegas Intelligence Console — AI-powered sports betting signals targeting 62-70% win rate across 10 sports. Three tiers: Free, Pro, and Enterprise. Public launch July 6, 2026.</p>
+        <p>VIC is the Vegas Intelligence Console — AI-powered sports betting signals targeting 62-70% win rate across 9 sports (8 leagues + FIFA World Cup). Three tiers: Free, Pro, and Enterprise. Public launch July 6, 2026.</p>
         
         <div class="cta-group">
             <a href="#products" class="btn btn-primary">
@@ -1346,8 +1375,8 @@
 
         <div class="hero-stats">
             <div class="stat">
-                <div class="stat-value">10</div>
-                <div class="stat-label">Sports</div>
+                <div class="stat-value">9</div>
+                <div class="stat-label">Sports<span class="stat-sublabel">8 leagues + 1 tournament</span></div>
             </div>
             <div class="stat">
                 <div class="stat-value">62-70%</div>
@@ -1379,10 +1408,10 @@
                     <div class="product-icon" style="background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-tertiary) 100%);">⚡</div>
                     <h3>VIC Free</h3>
                     <div class="price">$0<span class="price-unit">Open source · 3 signals/day</span></div>
-                    <p>The full Joshua engine, all 9 signal types, all 10 sports. Free shows you 3 actionable signals per day. Anonymous browsing shows everything else read-only.</p>
+                    <p>The full Joshua engine, all 9 signal types, all 9 sports (8 leagues + FIFA World Cup). Free shows you 3 actionable signals per day. Anonymous browsing shows everything else read-only.</p>
                     <ul class="product-features">
                         <li>Full Joshua engine — 9 signal types</li>
-                        <li>All 10 sports coverage</li>
+                        <li>All 9 sports coverage (8 leagues + FWC)</li>
                         <li>3 actionable signals per day</li>
                         <li>Bet tracker + CLV calculator</li>
                         <li>Resets at midnight in your timezone</li>
@@ -1442,50 +1471,55 @@
     <section class="sports-section" id="sports">
         <div class="section-container">
             <div class="section-header">
-                <h2>10 Sports Covered</h2>
-                <p>Joshua analyzes signals across all major sports leagues</p>
+                <h2>9 Sports Covered</h2>
+                <p>Joshua analyzes signals across 8 major sports leagues + the FIFA World Cup tournament</p>
             </div>
 
             <div class="sports-grid">
                 <div class="sport-card">
                     <div class="sport-icon">⚾</div>
                     <div class="sport-name">MLB</div>
+                    <div class="sport-note">Line moves + pitchers</div>
                 </div>
                 <div class="sport-card">
                     <div class="sport-icon">🏀</div>
                     <div class="sport-name">NBA</div>
+                    <div class="sport-note">Line moves + injuries</div>
                 </div>
                 <div class="sport-card">
                     <div class="sport-icon">🏈</div>
                     <div class="sport-name">NFL</div>
+                    <div class="sport-note">Line moves + injuries</div>
                 </div>
                 <div class="sport-card">
                     <div class="sport-icon">🏒</div>
                     <div class="sport-name">NHL</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-icon">⚽</div>
-                    <div class="sport-name">MLS</div>
+                    <div class="sport-note">Line moves + goalies</div>
                 </div>
                 <div class="sport-card">
                     <div class="sport-icon">🏈</div>
                     <div class="sport-name">NCAAF</div>
+                    <div class="sport-note">Line moves + injuries</div>
                 </div>
                 <div class="sport-card">
                     <div class="sport-icon">🏀</div>
                     <div class="sport-name">NCAAB</div>
+                    <div class="sport-note">Line moves + injuries</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">⚽</div>
+                    <div class="sport-name">MLS</div>
+                    <div class="sport-note">Model probabilities</div>
                 </div>
                 <div class="sport-card">
                     <div class="sport-icon">⚽</div>
                     <div class="sport-name">EPL</div>
+                    <div class="sport-note">Model probabilities</div>
                 </div>
-                <div class="sport-card">
-                    <div class="sport-icon">🥊</div>
-                    <div class="sport-name">Boxing</div>
-                </div>
-                <div class="sport-card">
-                    <div class="sport-icon">🥋</div>
-                    <div class="sport-name">MMA</div>
+                <div class="sport-card sport-tournament">
+                    <div class="sport-icon">🏆</div>
+                    <div class="sport-name">FIFA World Cup</div>
+                    <div class="sport-note">Tournament · Model probabilities</div>
                 </div>
             </div>
         </div>
@@ -1551,19 +1585,19 @@
     <section class="roadmap-section" id="roadmap">
         <div class="section-container">
             <div class="section-header">
-                <h2>Roadmap</h2>
-                <p>What we're building next. VIC Kiosk is on the list — but it's not a public product. Public launch is July 6, 2026.</p>
+                <h2>Roadmap &amp; Live Status</h2>
+                <p>What's running now, what ships at public launch, and what's next. The 2-week outcome review starts 7/6/26.</p>
             </div>
 
             <div class="roadmap-grid">
                 <div class="roadmap-card">
-                    <div class="roadmap-quarter">Q3 2026</div>
-                    <h4>Joshua Baseline Validation</h4>
-                    <p>Building the 62-70% win rate dataset with real settled signals. 30+ days of live tracking, public record, immutable.</p>
-                    <div class="roadmap-status in-progress">In Progress</div>
+                    <div class="roadmap-quarter">2-WEEK REVIEW · STARTING NOW</div>
+                    <h4>Baseline Validation in Real Conditions</h4>
+                    <p>Live signals being generated and tracked. Settled from ESPN scores. Public, immutable record. After 14 days, we publish the actual win rate vs the 62-70% target — and adjust what's live, what's paused, and what needs new rules.</p>
+                    <div class="roadmap-status in-progress">Tracking Live</div>
                 </div>
                 <div class="roadmap-card">
-                    <div class="roadmap-quarter">Q4 2026</div>
+                    <div class="roadmap-quarter">Q3 2026</div>
                     <h4>Telegram Alert Channel</h4>
                     <p>Pro users get real-time +EV signals pushed to Telegram. 30s after detection, with reasoning and link to full analysis.</p>
                     <div class="roadmap-status planned">Planned</div>
@@ -1587,7 +1621,7 @@
         <div class="section-container">
             <div class="section-header">
                 <h2>Joshua's Live Track Record</h2>
-                <p>Real signals, real outcomes. Every signal is logged, settled from ESPN scores, and public. <span class="track-disclaimer">Building baseline — first 30 days of data.</span></p>
+                <p>Real signals, real outcomes. Every signal is logged, settled from ESPN scores, and public. <span class="track-disclaimer">2-week review starts 7/6/26 — baseline data is live now.</span></p>
             </div>
 
             <div class="track-stats" id="track-stats">
